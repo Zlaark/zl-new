@@ -6,20 +6,22 @@ import Portfolio from '@/components/Portfolio';
 import Testimonials from '@/components/Testimonials';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import BackToTop from '@/components/BackToTop';
 
 export default function Home() {
-  return (
-    <>
-      <Header />
-      <main>
-        <Hero />
-        <Services />
-        <About />
-        <Portfolio />
-        <Testimonials />
-        <Contact />
-      </main>
-      <Footer />
-    </>
-  );
+    return (
+        <>
+            <Header />
+            <main>
+                <Hero />
+                <Services />
+                <About />
+                <Portfolio />
+                <Testimonials />
+                <Contact />
+            </main>
+            <Footer />
+            <BackToTop />
+        </>
+    );
 }

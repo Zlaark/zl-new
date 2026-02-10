@@ -5,8 +5,8 @@ import React from "react";
 
 const AnimatedBackground = () => {
   return (
-    <div className="absolute inset-0 overflow-hidden -z-10 bg-black">
-      {/* Dynamic Gradients */}
+    <div className="absolute inset-0 overflow-hidden -z-10 bg-[#fffbf7]">
+      {/* Warm Gradient Orbs */}
       <motion.div
         animate={{
           scale: [1, 1.2, 1],
@@ -18,26 +18,26 @@ const AnimatedBackground = () => {
           repeat: Infinity,
           ease: "linear",
         }}
-        className="absolute -top-1/2 -left-1/2 w-[100vw] h-[100vw] rounded-full bg-gradient-to-r from-purple-900/40 to-blue-900/40 blur-3xl opacity-30"
+        className="absolute -top-1/4 -left-1/4 w-[80vw] h-[80vw] rounded-full bg-gradient-to-r from-orange-200/40 to-amber-200/40 blur-3xl opacity-60"
       />
       
       <motion.div
         animate={{
-          scale: [1, 1.5, 1],
+          scale: [1, 1.3, 1],
           opacity: [0.2, 0.4, 0.2],
-          translateY: [0, 100, 0],
+          translateY: [0, 50, 0],
         }}
         transition={{
           duration: 20,
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute top-1/4 right-0 w-[50vw] h-[50vw] rounded-full bg-gradient-to-l from-indigo-900/30 to-fuchsia-900/30 blur-3xl opacity-20"
+        className="absolute top-1/4 right-0 w-[60vw] h-[60vw] rounded-full bg-gradient-to-l from-orange-100/50 to-yellow-100/50 blur-3xl opacity-60"
       />
 
        <motion.div
         animate={{
-            scale: [1, 1.3, 1],
+            scale: [1, 1.4, 1],
             rotate: [0, -45, 0]
         }}
         transition={{
@@ -45,11 +45,11 @@ const AnimatedBackground = () => {
             repeat: Infinity,
             ease: "easeInOut"
         }}
-        className="absolute bottom-0 left-1/4 w-[60vw] h-[60vw] rounded-full bg-gradient-to-t from-blue-800/20 to-teal-800/20 blur-3xl opacity-20"
+        className="absolute -bottom-1/4 left-1/3 w-[70vw] h-[70vw] rounded-full bg-gradient-to-t from-red-100/30 to-orange-100/30 blur-3xl opacity-50"
        />
        
-       {/* Subtle grid or texture overlay could go here */}
-       <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] mix-blend-overlay pointer-events-none"></div>
+       {/* Noise Overlay */}
+       <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.02] mix-blend-overlay pointer-events-none"></div>
     </div>
   );
 };
