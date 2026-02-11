@@ -21,7 +21,7 @@ export default function Header() {
     return (
         <header
             className={`fixed top-6 left-0 right-0 z-50 transition-all duration-500 border-b border-transparent
-        ${isScrolled ? 'py-3 bg-white/80 backdrop-blur-xl shadow-sm border-orange-100/20 mx-4 rounded-2xl' : 'py-5 bg-transparent'}`}
+        ${isScrolled ? 'py-3 bg-white/80 backdrop-blur-xl shadow-sm border-orange-100/20 mx-2 rounded-2xl' : 'py-5 bg-transparent'}`}
         >
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
                 <motion.a
@@ -67,7 +67,7 @@ export default function Header() {
                     ))}
                     <motion.a
                         href="#contact"
-                        className="px-14 py-2.5 text-sm font-bold text-white bg-gradient-to-r from-orange-500 to-amber-500 rounded-full hover:shadow-[0_4px_15px_rgba(249,115,22,0.4)] transition-all"
+                        className="px-20 py-2.5 text-sm font-bold text-white bg-gradient-to-r from-orange-500 to-amber-500 rounded-full hover:shadow-[0_4px_15px_rgba(249,115,22,0.4)] transition-all min-w-[150px] text-center"
                         whileHover={{ scale: 1.05, y: -2 }}
                         whileTap={{ scale: 0.95 }}
                         initial={{ opacity: 0, x: 20 }}
