@@ -67,7 +67,7 @@ export default function Header() {
                     ))}
                     <motion.a
                         href="#contact"
-                        className="px-10 py-2.5 text-sm font-bold text-white bg-gradient-to-r from-orange-500 to-amber-500 rounded-full hover:shadow-[0_4px_15px_rgba(249,115,22,0.4)] transition-all"
+                        className="px-14 py-2.5 text-sm font-bold text-white bg-gradient-to-r from-orange-500 to-amber-500 rounded-full hover:shadow-[0_4px_15px_rgba(249,115,22,0.4)] transition-all"
                         whileHover={{ scale: 1.05, y: -2 }}
                         whileTap={{ scale: 0.95 }}
                         initial={{ opacity: 0, x: 20 }}
