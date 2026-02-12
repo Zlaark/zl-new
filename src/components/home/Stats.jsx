@@ -58,7 +58,7 @@ const Counter = ({ value, suffix }) => {
 
 export default function Stats() {
     return (
-        <section className="py-20 bg-bg-primary border-y border-slate-100">
+        <section className="py-20 bg-white border-y border-black/5">
             <div className="container mx-auto px-6">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
                     {stats.map((stat) => (
@@ -73,7 +73,7 @@ export default function Stats() {
                             <div className="mb-2">
                                 <Counter value={stat.value} suffix={stat.suffix} />
                             </div>
-                            <p className="text-slate-500 font-medium text-lg">{stat.label}</p>
+                            <p className="text-black/60 font-medium text-lg">{stat.label}</p>
                         </motion.div>
                     ))}
                 </div>

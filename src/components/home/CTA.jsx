@@ -59,17 +59,17 @@ export default function CTA() {
     };
 
     return (
-        <section ref={containerRef} className='py-32 bg-background relative overflow-hidden flex items-center justify-center'>
+        <section ref={containerRef} className='py-32 bg-white relative overflow-hidden flex items-center justify-center'>
             {/* Background Glows */}
             <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[100px]' />
             
             <div className='container relative z-10 text-center px-6'>
                 <motion.div style={{ y }} className='max-w-4xl mx-auto'>
-                    <h2 className='text-5xl md:text-7xl font-bold text-foreground mb-8 leading-[1.1] tracking-tight'>
+                    <h2 className='text-5xl md:text-7xl font-bold text-black mb-8 leading-[1.1] tracking-tight'>
                         Ready to transform your <br />
                         <span className='text-transparent bg-clip-text bg-gradient-to-r from-accent via-purple-500 to-pink-500'>digital presence?</span>
                     </h2>
-                    <p className='text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed'>
+                    <p className='text-xl text-black/60 mb-12 max-w-2xl mx-auto leading-relaxed'>
                         Let's build something extraordinary together. From concept to launch, we are your partners in digital innovation.
                     </p>
 

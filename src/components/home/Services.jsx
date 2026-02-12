@@ -11,7 +11,7 @@ const services = [
         title: 'Strategy & Brand',
         description: 'We define your digital north star, crafting brand identities that resonate and strategies that deliver measurable growth.',
         className: 'md:col-span-2',
-        gradient: 'from-orange-500/20 to-amber-500/20'
+        gradient: 'from-orange-500/10 to-amber-500/10'
     },
     {
         icon: Palette,
@@ -38,14 +38,14 @@ const services = [
 
 export default function Services() {
     return (
-        <section className='section relative overflow-hidden bg-background py-32'>
+        <section className='section relative overflow-hidden bg-white py-32'>
             <div className='container mx-auto px-6 relative z-10'>
                 <div className='mb-20 max-w-2xl'>
                     <motion.h2 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className='text-4xl md:text-5xl font-bold mb-6 text-foreground'
+                        className='text-4xl md:text-5xl font-bold mb-6 text-black'
                     >
                         Our Expertise
                     </motion.h2>
@@ -54,7 +54,7 @@ export default function Services() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className='text-xl text-muted-foreground'
+                        className='text-xl text-black/60'
                     >
                         Comprehensive digital solutions tailored to elevate your business in the modern landscape.
                     </motion.p>
@@ -70,7 +70,7 @@ export default function Services() {
                             transition={{ delay: index * 0.1 }}
                             whileHover={{ y: -5 }}
                             className={cn(
-                                'group relative p-8 rounded-3xl bg-white/5 border border-white/10 overflow-hidden hover:bg-white/10 transition-colors duration-500',
+                                'group relative p-8 rounded-3xl bg-slate-50/50 border border-black/5 overflow-hidden hover:bg-white/10 transition-colors duration-500',
                                 service.className
                             )}
                         >
@@ -81,17 +81,17 @@ export default function Services() {
                             
                             <div className='relative z-10 h-full flex flex-col'>
                                 <div className='flex justify-between items-start mb-8'>
-                                    <div className='p-3 rounded-2xl bg-white/5 border border-white/10 text-foreground'>
+                                    <div className='p-3 rounded-2xl bg-slate-50/50 border border-black/5 text-black'>
                                         <service.icon size={32} strokeWidth={1.5} />
                                     </div>
-                                    <ArrowUpRight className='text-muted-foreground group-hover:text-foreground group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300' />
+                                    <ArrowUpRight className='text-black/60 group-hover:text-black group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300' />
                                 </div>
                                 
                                 <div className='mt-auto'>
-                                    <h3 className='text-2xl font-bold text-foreground mb-3'>
+                                    <h3 className='text-2xl font-bold text-black mb-3'>
                                         {service.title}
                                     </h3>
-                                    <p className='text-muted-foreground leading-relaxed'>
+                                    <p className='text-black/60 leading-relaxed'>
                                         {service.description}
                                     </p>
                                 </div>

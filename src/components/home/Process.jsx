@@ -37,7 +37,7 @@ export default function Process() {
     const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
     return (
-        <section ref={containerRef} className='section bg-background relative py-32'>
+        <section ref={containerRef} className='section bg-white relative py-32'>
             <div className='container mx-auto px-6 relative z-10'>
                 <div className='mb-20 text-center max-w-2xl mx-auto'>
                     <motion.span 
@@ -53,7 +53,7 @@ export default function Process() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className='text-4xl md:text-5xl font-bold text-foreground mb-4'
+                        className='text-4xl md:text-5xl font-bold text-black mb-4'
                     >
                         Streamlined Process
                     </motion.h2>
@@ -62,7 +62,7 @@ export default function Process() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className='text-muted-foreground'
+                        className='text-black/60'
                     >
                         A proven approach designed to deliver exceptional results, every time.
                     </motion.p>
@@ -99,10 +99,10 @@ export default function Process() {
                                         <div className='flex items-center gap-4 mb-4 md:hidden'>
                                             <span className='text-accent font-mono text-sm'>Step {step.id}</span>
                                         </div>
-                                        <h3 className='text-2xl font-bold text-foreground mb-4'>
+                                        <h3 className='text-2xl font-bold text-black mb-4'>
                                             {step.title}
                                         </h3>
-                                        <p className='text-muted-foreground leading-relaxed'>
+                                        <p className='text-black/60 leading-relaxed'>
                                             {step.description}
                                         </p>
                                     </div>
@@ -110,7 +110,7 @@ export default function Process() {
 
                                 {/* Center Point */}
                                 <div className='absolute left-[20px] md:left-1/2 transform -translate-x-[19.5px] md:-translate-x-1/2 flex items-center justify-center'>
-                                    <div className='w-10 h-10 rounded-full bg-background border border-white/10 shadow-xl flex items-center justify-center z-10 group-hover:border-accent transition-colors duration-300'>
+                                    <div className='w-10 h-10 rounded-full bg-white border border-black/5 shadow-xl flex items-center justify-center z-10 group-hover:border-accent transition-colors duration-300'>
                                         <div className='w-2 h-2 rounded-full bg-accent animate-pulse' />
                                     </div>
                                 </div>
