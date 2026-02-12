@@ -1,0 +1,86 @@
+'use client';
+
+import { useRef, useState } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+
+export default function CTA() {
+    const containerRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end end"]
+    });
+
+    const y = useTransform(scrollYProgress, [0, 1], [100, 0]);
+
+    // Reusing magnetic button logic for consistency
+    const MagneticButton = ({ children, href }) => {
+        const ref = useRef(null);
+        const [position, setPosition] = useState({ x: 0, y: 0 });
+
+        const handleMouse = (e) => {
+            const { clientX, clientY } = e;
+            const { height, width, left, top } = ref.current.getBoundingClientRect();
+            const middleX = clientX - (left + width / 2);
+            const middleY = clientY - (top + height / 2);
+            setPosition({ x: middleX * 0.5, y: middleY * 0.5 });
+        };
+
+        const reset = () => {
+            setPosition({ x: 0, y: 0 });
+        };
+
+        const { x, y } = position;
+
+        return (
+            <motion.div
+                ref={ref}
+                onMouseMove={handleMouse}
+                onMouseLeave={reset}
+                animate={{ x, y }}
+                transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
+            >
+                <Link
+                    href={href}
+                    className="group relative flex items-center justify-center gap-3 px-10 py-6 rounded-full font-bold text-xl bg-slate-900 text-white shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 overflow-hidden"
+                >
+                    <span className="relative z-10">{children}</span>
+                    <motion.span
+                        initial={{ x: 0 }}
+                        whileHover={{ x: 5 }}
+                        className="relative z-10"
+                    >
+                        <ArrowRight />
+                    </motion.span>
+
+                    {/* Flush of color on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-orange-600 to-amber-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </Link>
+            </motion.div>
+        );
+    };
+
+    return (
+        <section ref={containerRef} className="py-32 bg-white relative overflow-hidden flex items-center justify-center">
+            {/* Decorative circles */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-slate-100 rounded-full" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-slate-100 rounded-full" />
+
+            <div className="container relative z-10 text-center">
+                <motion.div style={{ y }} className="max-w-3xl mx-auto">
+                    <h2 className="text-5xl md:text-7xl font-bold text-slate-900 mb-8 leading-tight">
+                        Ready to transform your <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-500">digital presence?</span>
+                    </h2>
+                    <p className="text-xl text-slate-500 mb-12 max-w-2xl mx-auto">
+                        Let's build something extraordinary together. Schedule a discovery call today.
+                    </p>
+
+                    <div className="flex justify-center">
+                        <MagneticButton href="/contact">Start Your Project</MagneticButton>
+                    </div>
+                </motion.div>
+            </div>
+        </section>
+    );
+}

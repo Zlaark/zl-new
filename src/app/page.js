@@ -1,10 +1,10 @@
 import Header from '@/components/Header';
-import Hero from '@/components/Hero';
-import Services from '@/components/Services';
-import About from '@/components/About';
-import Portfolio from '@/components/Portfolio';
-import Testimonials from '@/components/Testimonials';
-import Contact from '@/components/Contact';
+import Hero from '@/components/home/Hero';
+import Services from '@/components/home/Services';
+import Process from '@/components/home/Process';
+import Portfolio from '@/components/home/Portfolio';
+import Stats from '@/components/home/Stats';
+import CTA from '@/components/home/CTA';
 import Footer from '@/components/Footer';
 import BackToTop from '@/components/BackToTop';
 
@@ -12,13 +12,13 @@ export default function Home() {
     return (
         <>
             <Header />
-            <main>
+            <main className="overflow-hidden">
                 <Hero />
+                <Stats />
                 <Services />
-                <About />
+                <Process />
                 <Portfolio />
-                <Testimonials />
-                <Contact />
+                <CTA />
             </main>
             <Footer />
             <BackToTop />
