@@ -48,8 +48,8 @@ export default function Portfolio() {
     return (
         <section className='section bg-white relative'>
              <div className='container mx-auto px-6'>
-                <div className='flex flex-col md:flex-row md:items-end justify-between mb-16'>
-                    <div className='mb-8 md:mb-0 max-w-2xl'>
+                <div className='mb-16 text-center max-w-3xl mx-auto'>
+                    <div className='mb-8'>
                         <motion.span 
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -75,7 +75,7 @@ export default function Portfolio() {
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
                     >
-                        <Link href='/work' className='group flex items-center gap-2 px-6 py-3 rounded-full bg-slate-50/50 border border-black/5 text-black hover:bg-white/10 transition-all'>
+                        <Link href='/work' className='group flex w-fit mx-auto items-center gap-2 px-6 py-3 rounded-full bg-slate-50/50 border border-black/5 text-black hover:bg-white/10 transition-all'>
                             View All Projects
                             <ArrowUpRight size={18} className='text-black/60 group-hover:text-black group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform' />
                         </Link>
