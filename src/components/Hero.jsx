@@ -3,6 +3,7 @@ import '@/styles/components.css';
 import { motion } from 'framer-motion';
 import TextReveal from './ui/TextReveal';
 import { hero } from '@/data/content';
+import Image from 'next/image';
 
 export default function Hero() {
     return (
@@ -13,6 +14,22 @@ export default function Hero() {
 
             <div className="container relative z-10">
                 <div className="flex flex-col items-center justify-center text-center pt-32">
+
+                    {/* Logo */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        className="mb-8"
+                    >
+                        <Image
+                            src="/logo.jpg"
+                            alt="Zlaark Logo"
+                            width={100}
+                            height={100}
+                            className="w-24 h-24 object-contain"
+                        />
+                    </motion.div>
 
                     {/* Badge */}
                     <motion.div

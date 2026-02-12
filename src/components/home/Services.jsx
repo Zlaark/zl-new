@@ -1,120 +1,104 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import {
-    Lightbulb,
-    Palette,
-    Code2,
-    Rocket
-} from 'lucide-react';
+import { Lightbulb, Palette, Code2, Rocket, ArrowUpRight } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 const services = [
     {
         icon: Lightbulb,
         title: 'Strategy & Brand',
         description: 'We define your digital north star, crafting brand identities that resonate and strategies that deliver measurable growth.',
-        color: 'from-orange-400 to-amber-500'
+        className: 'md:col-span-2',
+        gradient: 'from-orange-500/20 to-amber-500/20'
     },
     {
         icon: Palette,
         title: 'UI/UX Design',
-        description: 'Award-winning interfaces that blend beauty with function. We design intuitive experiences users love to explore.',
-        color: 'from-blue-400 to-indigo-500'
+        description: 'Award-winning interfaces that blend beauty with function.',
+        className: 'md:col-span-1',
+        gradient: 'from-blue-500/20 to-indigo-500/20'
     },
     {
         icon: Code2,
         title: 'Development',
-        description: 'Robust, scalable, and lightning-fast code. We build modern web applications using the latest tech stack.',
-        color: 'from-emerald-400 to-teal-500'
+        description: 'Robust, scalable, and lightning-fast code built with modern tech.',
+        className: 'md:col-span-1',
+        gradient: 'from-emerald-500/20 to-teal-500/20'
     },
     {
         icon: Rocket,
         title: 'Growth & Marketing',
-        description: 'Data-driven campaigns that amplify your reach. We help you find and convert your ideal audience.',
-        color: 'from-purple-400 to-pink-500'
+        description: 'Data-driven campaigns that amplify your reach and convert your ideal audience.',
+        className: 'md:col-span-2',
+        gradient: 'from-purple-500/20 to-pink-500/20'
     }
 ];
 
-const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.2
-        }
-    }
-};
-
-const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            duration: 0.6,
-            ease: "easeOut"
-        }
-    }
-};
-
 export default function Services() {
     return (
-        <section className="section bg-bg-secondary relative overflow-hidden">
-            {/* Background decoration */}
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-30">
-                <div className="absolute top-[20%] right-[-10%] w-[500px] h-[500px] bg-amber-100 rounded-full blur-3xl" />
-                <div className="absolute bottom-[10%] left-[-5%] w-[400px] h-[400px] bg-slate-100 rounded-full blur-3xl" />
-            </div>
-
-            <div className="container relative z-10">
-                <div className="section-header">
-                    <motion.div
+        <section className='section relative overflow-hidden bg-background py-32'>
+            <div className='container mx-auto px-6 relative z-10'>
+                <div className='mb-20 max-w-2xl'>
+                    <motion.h2 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
+                        className='text-4xl md:text-5xl font-bold mb-6 text-foreground'
                     >
-                        <h2 className="section-title">Our Expertise</h2>
-                        <p className="section-subtitle">
-                            Comprehensive digital solutions tailored to elevate your business in the modern landscape.
-                        </p>
-                    </motion.div>
+                        Our Expertise
+                    </motion.h2>
+                    <motion.p 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 }}
+                        className='text-xl text-muted-foreground'
+                    >
+                        Comprehensive digital solutions tailored to elevate your business in the modern landscape.
+                    </motion.p>
                 </div>
 
-                <motion.div
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                >
+                <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
                     {services.map((service, index) => (
                         <motion.div
                             key={index}
-                            variants={itemVariants}
-                            whileHover={{ y: -10 }}
-                            className="group relative p-8 bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 overflow-hidden"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 }}
+                            whileHover={{ y: -5 }}
+                            className={cn(
+                                'group relative p-8 rounded-3xl bg-white/5 border border-white/10 overflow-hidden hover:bg-white/10 transition-colors duration-500',
+                                service.className
+                            )}
                         >
-                            {/* Hover Gradient Overlay */}
-                            <div className={`absolute inset-0 opacity-0 group-hover:opacity-5 bg-gradient-to-br ${service.color} transition-opacity duration-300`} />
-
-                            <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-gradient-to-br ${service.color} text-white shadow-md group-hover:scale-110 transition-transform duration-300`}>
-                                <service.icon size={28} strokeWidth={1.5} />
+                            <div className={cn(
+                                'absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br',
+                                service.gradient
+                            )} />
+                            
+                            <div className='relative z-10 h-full flex flex-col'>
+                                <div className='flex justify-between items-start mb-8'>
+                                    <div className='p-3 rounded-2xl bg-white/5 border border-white/10 text-foreground'>
+                                        <service.icon size={32} strokeWidth={1.5} />
+                                    </div>
+                                    <ArrowUpRight className='text-muted-foreground group-hover:text-foreground group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300' />
+                                </div>
+                                
+                                <div className='mt-auto'>
+                                    <h3 className='text-2xl font-bold text-foreground mb-3'>
+                                        {service.title}
+                                    </h3>
+                                    <p className='text-muted-foreground leading-relaxed'>
+                                        {service.description}
+                                    </p>
+                                </div>
                             </div>
-
-                            <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-slate-900 group-hover:to-slate-700 transition-colors">
-                                {service.title}
-                            </h3>
-
-                            <p className="text-slate-600 leading-relaxed text-sm">
-                                {service.description}
-                            </p>
-
-                            {/* Bottom Line Indicator */}
-                            <div className={`absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r ${service.color} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`} />
                         </motion.div>
                     ))}
-                </motion.div>
+                </div>
             </div>
         </section>
     );
