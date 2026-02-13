@@ -3,6 +3,8 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { cn } from '@/lib/utils';
+import { MetallicShape } from '@/components/ui/MetallicShape';
+import { FloatingElement } from '@/components/ui/FloatingElement';
 
 const steps = [
     {
@@ -37,32 +39,81 @@ export default function Process() {
     const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
     return (
-        <section ref={containerRef} className='section bg-white relative py-32'>
+        <section ref={containerRef} className='section bg-[#fafafa] relative py-32 overflow-hidden'>
+            <FloatingElement color="bg-orange-400" size="400px" top="-10%" left="-5%" delay={0} />
+            <FloatingElement color="bg-blue-400" size="300px" top="60%" left="80%" delay={2} />
+            <FloatingElement color="bg-purple-400" size="250px" top="20%" left="70%" delay={4} />
+
+            <MetallicShape className="-top-20 -right-20" delay={0} size={500} />
+            <MetallicShape className="top-1/2 -left-32" delay={5} size={400} />
+            <MetallicShape className="-bottom-32 right-1/4" delay={10} size={300} />
+
             <div className='container mx-auto px-6 relative z-10'>
                 <div className='mb-20 text-center max-w-2xl mx-auto'>
-                    <motion.span 
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className='text-accent text-sm font-medium tracking-wider uppercase mb-4 block'
+                        className='inline-block px-4 py-1.5 mb-6 rounded-full bg-black/5 text-sm font-medium text-black/60 tracking-wider uppercase'
                     >
                         How We Work
-                    </motion.span>
+                    </motion.div>
+
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className='text-4xl md:text-5xl font-bold text-black mb-4'
+                        className='text-5xl md:text-6xl font-bold text-black leading-[1.1] tracking-tighter mb-8'
                     >
-                        Streamlined Process
+                        <span className="relative inline-block">
+                            <span className="metallic-shine">Streamlined</span>
+                        </span>{" "}
+                        <span className='text-orange-500'>Process</span>
+                        <span className="period-glow text-orange-500">.</span>
+
+                        <style jsx>{`
+                            .metallic-shine {
+                                background: linear-gradient(
+                                    90deg, 
+                                    rgb(0, 0, 0) 0%, 
+                                    rgb(0, 0, 0) 45%, 
+                                    rgb(226, 232, 240) 50%, 
+                                    rgb(0, 0, 0) 55%, 
+                                    rgb(0, 0, 0) 100%
+                                );
+                                background-size: 200% 100%;
+                                -webkit-background-clip: text;
+                                -webkit-text-fill-color: transparent;
+                                animation: shine 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+                                animation-iteration-count: 1;
+                                animation-delay: 0.5s;
+                                display: inline-block;
+                            }
+
+                            .period-glow {
+                                color: #ffedd5;
+                                text-shadow: 0 0 10px rgba(249, 115, 22, 0.4), 0 0 20px rgba(249, 115, 22, 0.2);
+                                font-weight: 900;
+                            }
+
+                            @keyframes shine {
+                                0% {
+                                    background-position: 200% 0%;
+                                }
+                                100% {
+                                    background-position: -200% 0%;
+                                }
+                            }
+                        `}</style>
                     </motion.h2>
+
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className='text-black/60'
+                        className='text-lg md:text-xl text-black/60 leading-relaxed'
                     >
                         A proven approach designed to deliver exceptional results, every time.
                     </motion.p>

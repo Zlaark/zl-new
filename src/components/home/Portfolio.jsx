@@ -1,10 +1,12 @@
 'use client';
 
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion, useAnimationControls } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
+import { MetallicShape } from '@/components/ui/MetallicShape';
+import { FloatingElement } from '@/components/ui/FloatingElement';
 
 const projects = [
     {
@@ -40,128 +42,18 @@ const projects = [
     }
 ];
 
-function MetallicShape({ delay = 0, className, size = 300 }) {
-    return (
-        <motion.div
-            className={cn("absolute pointer-events-none z-0", className)}
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 0.4, scale: 1 }}
-            viewport={{ once: true }}
-            animate={{
-                y: [0, -40, 0],
-                rotate: [0, 90, 0],
-                x: [0, 20, 0],
-            }}
-            transition={{
-                duration: 20,
-                repeat: Infinity,
-                delay,
-                ease: "linear"
-            }}
-            style={{ width: size, height: size }}
-        >
-            <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-2xl">
-                <defs>
-                    <linearGradient id={`metallic-p-${delay}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#e2e8f0" />
-                        <stop offset="25%" stopColor="#94a3b8" />
-                        <stop offset="50%" stopColor="#475569" />
-                        <stop offset="75%" stopColor="#94a3b8" />
-                        <stop offset="100%" stopColor="#e2e8f0" />
-                    </linearGradient>
-                    <filter id="glow-p">
-                        <feGaussianBlur stdDeviation="5" result="coloredBlur" />
-                        <feMerge>
-                            <feMergeNode in="coloredBlur" />
-                            <feMergeNode in="SourceGraphic" />
-                        </feMerge>
-                    </filter>
-                </defs>
-                <path
-                    fill={`url(#metallic-p-${delay})`}
-                    filter="url(#glow-p)"
-                    d="M44.7,-76.4C58.1,-69.2,69.2,-58.1,77.3,-44.7C85.4,-31.3,90.5,-15.7,90.1,-0.2C89.7,15.2,83.9,30.5,75.1,43.7C66.3,56.9,54.5,68.1,40.7,75.8C26.9,83.5,13.5,87.7,-1.1,89.5C-15.7,91.3,-31.4,90.7,-45.8,84.1C-60.1,77.4,-73.2,64.7,-81.4,49.8C-89.6,34.9,-93,17.4,-91.6,0.8C-91.6,-15.8,-84.1,-31.7,-74.6,-45.5C-65.1,-59.3,-52.3,-71.1,-37.9,-77.7C-23.5,-84.3,-7.5,-85.7,8.6,-80.7C24.7,-75.7,31.3,-83.6,44.7,-76.4Z"
-                    transform="translate(100 100)"
-                />
-            </svg>
-        </motion.div>
-    );
-}
-
-function FloatingElement({ color, size, top, left, delay }) {
-    return (
-        <motion.div
-            className={cn("absolute rounded-full blur-[80px] opacity-20 pointer-events-none", color)}
-            style={{ width: size, height: size, top, left }}
-            animate={{
-                y: [0, -30, 0],
-                x: [0, 20, 0],
-                scale: [1, 1.1, 1],
-            }}
-            transition={{
-                duration: 8,
-                repeat: Infinity,
-                delay,
-                ease: "easeInOut"
-            }}
-        />
-    );
-}
+// Duplicate projects to create a seamless loop
+const marqueeProjects = [...projects, ...projects, ...projects];
 
 function ProjectCard({ project, index }) {
-    const cardRef = useRef(null);
     const [isHovered, setIsHovered] = useState(false);
-
-    // 3D Tilt Effect
-    const mouseX = useMotionValue(0);
-    const mouseY = useMotionValue(0);
-
-    const springConfig = { stiffness: 150, damping: 20 };
-    const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [10, -10]), springConfig);
-    const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-10, 10]), springConfig);
-
-    function handleMouseMove(e) {
-        if (!cardRef.current) return;
-        const rect = cardRef.current.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        mouseX.set(x);
-        mouseY.set(y);
-    }
-
-    function handleMouseLeave() {
-        mouseX.set(0);
-        mouseY.set(0);
-        setIsHovered(false);
-    }
-
-    // Determine grid span based on index
-    // First row (index 0, 1, 2) -> 3 items -> 2 cols each in a 6-col grid
-    // Second row (index 3, 4) -> 2 items -> 3 cols each in a 6-col grid
-    const getGridSpan = (i) => {
-        if (i < 3) return 'lg:col-span-2 md:col-span-3';
-        return 'lg:col-span-3 md:col-span-6';
-    };
 
     return (
         <motion.div
-            ref={cardRef}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1, duration: 0.8, ease: "easeOut" }}
-            onMouseMove={handleMouseMove}
             onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={handleMouseLeave}
-            style={{
-                rotateX,
-                rotateY,
-                perspective: 1000,
-                transformStyle: "preserve-3d"
-            }}
+            onMouseLeave={() => setIsHovered(false)}
             className={cn(
-                'group relative rounded-[2.5rem] overflow-hidden cursor-pointer bg-white h-[450px] transition-shadow duration-500',
-                getGridSpan(index),
+                'group relative rounded-[2.5rem] overflow-hidden cursor-pointer bg-white h-[450px] min-w-[350px] md:min-w-[450px] transition-shadow duration-500',
                 isHovered ? 'shadow-[0_20px_50px_rgba(0,0,0,0.15)]' : 'shadow-lg'
             )}
         >
@@ -191,8 +83,8 @@ function ProjectCard({ project, index }) {
             {/* Vignette Overlay */}
             <div className='absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90' />
 
-            {/* Floating content with parallax effect */}
-            <div className='absolute inset-0 p-10 flex flex-col justify-between z-20' style={{ transform: "translateZ(50px)" }}>
+            {/* Floating content */}
+            <div className='absolute inset-0 p-10 flex flex-col justify-between z-20'>
                 <div className='flex justify-end'>
                     <motion.div
                         animate={{
@@ -234,8 +126,21 @@ function ProjectCard({ project, index }) {
 }
 
 export default function Portfolio() {
+    const controls = useAnimationControls();
+
+    useEffect(() => {
+        controls.start({
+            x: "-50%",
+            transition: {
+                duration: 40,
+                ease: "linear",
+                repeat: Infinity,
+            }
+        });
+    }, [controls]);
+
     return (
-        <section className='section bg-[#fdfdfd] py-32 px-4 relative overflow-hidden'>
+        <section className='relative bg-[#fdfdfd] py-32 overflow-hidden'>
             {/* Background elements */}
             <FloatingElement color="bg-orange-100" size="500px" top="-10%" right="0" delay={0} />
             <FloatingElement color="bg-blue-100" size="500px" bottom="0" left="0" delay={2} />
@@ -243,8 +148,8 @@ export default function Portfolio() {
             <MetallicShape className="-top-20 -right-20" delay={0} size={500} />
             <MetallicShape className="-bottom-32 left-10" delay={5} size={300} />
 
-            <div className='container mx-auto max-w-7xl relative z-10'>
-                <div className='mb-24 flex flex-col items-center text-center'>
+            <div className='container mx-auto max-w-7xl relative z-10 px-4'>
+                <div className='mb-16 flex flex-col items-center text-center'>
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -263,7 +168,7 @@ export default function Portfolio() {
                     >
                         <span className="relative inline-block">
                             <span className="metallic-shine">Digital Excellence</span>
-                        </span> <br />
+                        </span>{" "}
                         <span className="text-orange-500">Redefined.</span>
 
                         <style jsx>{`
@@ -309,11 +214,30 @@ export default function Portfolio() {
                         </Link>
                     </motion.div>
                 </div>
+            </div>
 
-                <div className='grid grid-cols-1 md:grid-cols-6 gap-8'>
-                    {projects.map((project, index) => (
-                        <ProjectCard key={project.id} project={project} index={index} />
-                    ))}
+            {/* Marquee Container */}
+            <div
+                className='relative w-full overflow-hidden'
+                onMouseEnter={() => controls.stop()}
+                onMouseLeave={() => controls.start({
+                    x: "-50%",
+                    transition: {
+                        duration: 40,
+                        ease: "linear",
+                        repeat: Infinity,
+                    }
+                })}
+            >
+                <div className="flex gap-8 pl-4 md:pl-20 min-w-max">
+                    <motion.div
+                        className="flex gap-8"
+                        animate={controls}
+                    >
+                        {marqueeProjects.map((project, index) => (
+                            <ProjectCard key={`${project.id}-${index}`} project={project} index={index} />
+                        ))}
+                    </motion.div>
                 </div>
             </div>
         </section>
