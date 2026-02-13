@@ -142,9 +142,10 @@ export default function Process() {
                                 )}
                             >
                                 {/* Content Block */}
-                                <div className='md:w-1/2 pl-16 md:pl-0 md:px-16'>
+                                <div className={cn('md:w-1/2 pl-16 md:pl-0', index % 2 === 0 ? 'md:pl-16' : 'md:pr-16')}>
+
                                     <div className={cn(
-                                        'text-left',
+                                        'text-left p-8 rounded-2xl bg-gradient-to-br from-white to-white/50 border border-black/5 shadow-sm hover:shadow-md hover:border-black/10 transition-all duration-300',
                                         index % 2 === 0 ? 'md:text-left' : 'md:text-right'
                                     )}>
                                         <div className='flex items-center gap-4 mb-4 md:hidden'>
@@ -160,14 +161,14 @@ export default function Process() {
                                 </div>
 
                                 {/* Center Point */}
-                                <div className='absolute left-[20px] md:left-1/2 transform -translate-x-[19.5px] md:-translate-x-1/2 flex items-center justify-center'>
+                                <div className='absolute top-1/2 left-[20px] md:left-1/2 transform -translate-y-1/2 -translate-x-[19.5px] md:-translate-x-1/2 flex items-center justify-center'>
                                     <div className='w-10 h-10 rounded-full bg-white border border-black/5 shadow-xl flex items-center justify-center z-10 group-hover:border-accent transition-colors duration-300'>
                                         <div className='w-2 h-2 rounded-full bg-accent animate-pulse' />
                                     </div>
                                 </div>
 
                                 {/* Number Display (Opposite Side) */}
-                                <div className='hidden md:block md:w-1/2 px-16'>
+                                <div className={cn('hidden md:block md:w-1/2', index % 2 === 0 ? 'md:pr-16' : 'md:pl-16')}>
                                     <div className={cn(
                                         'text-9xl font-black text-white/5 select-none font-mono',
                                         index % 2 === 0 ? 'text-right' : 'text-left'
