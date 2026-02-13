@@ -1,9 +1,9 @@
-'use client';
+﻿'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { Lightbulb, Palette, Code2, Rocket, ArrowUpRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import Link from 'next/link';
+import { useState } from 'react';
 
 const services = [
     {
@@ -11,92 +11,159 @@ const services = [
         title: 'Strategy & Brand',
         description: 'We define your digital north star, crafting brand identities that resonate and strategies that deliver measurable growth.',
         className: 'md:col-span-2',
-        gradient: 'from-orange-500/10 to-amber-500/10'
+        gradient: 'from-orange-500/20 to-amber-500/20'
     },
     {
         icon: Palette,
         title: 'UI/UX Design',
         description: 'Award-winning interfaces that blend beauty with function.',
         className: 'md:col-span-1',
-        gradient: 'from-blue-500/20 to-indigo-500/20'
+        gradient: 'from-blue-500/30 to-indigo-500/30'
     },
     {
         icon: Code2,
         title: 'Development',
         description: 'Robust, scalable, and lightning-fast code built with modern tech.',
         className: 'md:col-span-1',
-        gradient: 'from-emerald-500/20 to-teal-500/20'
+        gradient: 'from-emerald-500/30 to-teal-500/30'
     },
     {
         icon: Rocket,
         title: 'Growth & Marketing',
         description: 'Data-driven campaigns that amplify your reach and convert your ideal audience.',
         className: 'md:col-span-2',
-        gradient: 'from-purple-500/20 to-pink-500/20'
+        gradient: 'from-purple-500/30 to-pink-500/30'
     }
 ];
 
+function FloatingElement({ color, size, top, left, delay }) {
+    return (
+        <motion.div
+            className={cn("absolute rounded-full blur-[80px] opacity-20 pointer-events-none", color)}
+            style={{ width: size, height: size, top, left }}
+            animate={{
+                y: [0, -30, 0],
+                x: [0, 20, 0],
+                scale: [1, 1.1, 1],
+            }}
+            transition={{
+                duration: 8,
+                repeat: Infinity,
+                delay,
+                ease: "easeInOut"
+            }}
+        />
+    );
+}
+
+function ServiceCard({ service, index }) {
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
+
+    const rotateX = useTransform(y, [-100, 100], [10, -10]);
+    const rotateY = useTransform(x, [-100, 100], [-10, 10]);
+
+    function handleMouseMove(event) {
+        const rect = event.currentTarget.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        x.set(event.clientX - centerX);
+        y.set(event.clientY - centerY);
+    }
+
+    function handleMouseLeave() {
+        x.set(0);
+        y.set(0);
+    }
+
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            style={{ rotateX, rotateY, perspective: 1000 }}
+            className={cn(
+                'group relative p-8 rounded-[2rem] bg-white border border-black/5 overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-black/5',
+                service.className
+            )}
+        >
+            <div className={cn(
+                'absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-br',
+                service.gradient
+            )} />
+            
+            <div className='relative z-10 h-full flex flex-col'>
+                <div className='flex justify-between items-start mb-12'>
+                    <motion.div 
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        className='p-4 rounded-2xl bg-slate-50 border border-black/5 text-black transition-colors group-hover:bg-white group-hover:border-black/10'
+                    >
+                        <service.icon size={32} strokeWidth={1.5} />
+                    </motion.div>
+                    <div className='p-2 rounded-full bg-black/5 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0'>
+                        <ArrowUpRight className='text-black size={6}' />
+                    </div>
+                </div>
+                
+                <div className='mt-auto'>
+                    <h3 className='text-2xl font-bold text-black mb-4 group-hover:translate-x-1 transition-transform duration-500'>
+                        {service.title}
+                    </h3>
+                    <p className='text-black/60 leading-relaxed text-lg group-hover:text-black/80 transition-colors duration-500'>
+                        {service.description}
+                    </p>
+                </div>
+            </div>
+
+            <div className='absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-br from-black/5 to-transparent rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700' />
+        </motion.div>
+    );
+}
+
 export default function Services() {
     return (
-        <section className='section relative overflow-hidden bg-white py-32'>
+        <section className='section relative overflow-hidden bg-[#fafafa] py-32'>
+            <FloatingElement color="bg-orange-400" size="400px" top="-10%" left="-5%" delay={0} />
+            <FloatingElement color="bg-blue-400" size="300px" top="60%" left="80%" delay={2} />
+            <FloatingElement color="bg-purple-400" size="250px" top="20%" left="70%" delay={4} />
+
             <div className='container mx-auto px-6 relative z-10'>
-                <div className='mb-20 max-w-3xl mx-auto text-center'>
+                <div className='mb-24 max-w-3xl mx-auto text-center'>
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        className='inline-block px-4 py-1.5 mb-6 rounded-full bg-black/5 text-sm font-medium text-black/60 tracking-wider uppercase'
+                    >
+                        Our Expertise
+                    </motion.div>
+                    
                     <motion.h2 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className='text-4xl md:text-5xl font-bold mb-6 text-black'
+                        className='text-5xl md:text-6xl font-bold mb-8 text-black tracking-tight'
                     >
-                        Our Expertise
+                        Solutions built for the <span className='text-orange-600'>future</span>.
                     </motion.h2>
+                    
                     <motion.p 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className='text-xl text-black/60'
+                        className='text-xl md:text-2xl text-black/60 leading-relaxed'
                     >
-                        Comprehensive digital solutions tailored to elevate your business in the modern landscape.
+                        We combine strategic thinking with cutting-edge technology to deliver digital products that stand out.
                     </motion.p>
                 </div>
 
-                <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
+                <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
                     {services.map((service, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                            whileHover={{ y: -5 }}
-                            className={cn(
-                                'group relative p-8 rounded-3xl bg-slate-50/50 border border-black/5 overflow-hidden hover:bg-white/10 transition-colors duration-500',
-                                service.className
-                            )}
-                        >
-                            <div className={cn(
-                                'absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br',
-                                service.gradient
-                            )} />
-                            
-                            <div className='relative z-10 h-full flex flex-col'>
-                                <div className='flex justify-between items-start mb-8'>
-                                    <div className='p-3 rounded-2xl bg-slate-50/50 border border-black/5 text-black'>
-                                        <service.icon size={32} strokeWidth={1.5} />
-                                    </div>
-                                    <ArrowUpRight className='text-black/60 group-hover:text-black group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300' />
-                                </div>
-                                
-                                <div className='mt-auto'>
-                                    <h3 className='text-2xl font-bold text-black mb-3'>
-                                        {service.title}
-                                    </h3>
-                                    <p className='text-black/60 leading-relaxed'>
-                                        {service.description}
-                                    </p>
-                                </div>
-                            </div>
-                        </motion.div>
+                        <ServiceCard key={index} service={service} index={index} />
                     ))}
                 </div>
             </div>
