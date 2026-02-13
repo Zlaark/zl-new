@@ -39,11 +39,47 @@ const projects = [
         title: 'Future AI',
         category: 'SaaS Platform',
         gradient: 'from-purple-600/90 to-indigo-600/90'
+    },
+    // Second Row Projects
+    {
+        id: 6,
+        title: 'Urban Oasis',
+        category: 'Real Estate',
+        gradient: 'from-teal-600/90 to-emerald-600/90'
+    },
+    {
+        id: 7,
+        title: 'Neon Pulse',
+        category: 'Music App',
+        gradient: 'from-fuchsia-600/90 to-pink-600/90'
+    },
+    {
+        id: 8,
+        title: 'Quantum Leap',
+        category: 'Tech Startup',
+        gradient: 'from-indigo-600/90 to-violet-600/90'
+    },
+    {
+        id: 9,
+        title: 'Culinary Arts',
+        category: 'Restaurant',
+        gradient: 'from-orange-600/90 to-yellow-500/90'
+    },
+    {
+        id: 10,
+        title: 'Silent Sea',
+        category: 'Photography',
+        gradient: 'from-slate-700 to-slate-500'
     }
 ];
 
-// Duplicate projects to create a seamless loop
-const marqueeProjects = [...projects, ...projects, ...projects];
+// Split projects into two rows
+const row1Projects = projects.slice(0, 5);
+const row2Projects = projects.slice(5, 10);
+
+// Duplicate for infinite loop
+const marqueeRow1 = [...row1Projects, ...row1Projects, ...row1Projects];
+const marqueeRow2 = [...row2Projects, ...row2Projects, ...row2Projects];
 
 function ProjectCard({ project, index }) {
     const [isHovered, setIsHovered] = useState(false);
@@ -53,7 +89,7 @@ function ProjectCard({ project, index }) {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             className={cn(
-                'group relative rounded-[2.5rem] overflow-hidden cursor-pointer bg-white h-[450px] min-w-[350px] md:min-w-[450px] transition-shadow duration-500',
+                'group relative rounded-[2.5rem] overflow-hidden cursor-pointer bg-white h-[400px] min-w-[300px] md:min-w-[400px] transition-shadow duration-500',
                 isHovered ? 'shadow-[0_20px_50px_rgba(0,0,0,0.15)]' : 'shadow-lg'
             )}
         >
@@ -84,7 +120,7 @@ function ProjectCard({ project, index }) {
             <div className='absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90' />
 
             {/* Floating content */}
-            <div className='absolute inset-0 p-10 flex flex-col justify-between z-20'>
+            <div className='absolute inset-0 p-8 flex flex-col justify-between z-20'>
                 <div className='flex justify-end'>
                     <motion.div
                         animate={{
@@ -92,24 +128,24 @@ function ProjectCard({ project, index }) {
                             rotate: isHovered ? 45 : 0,
                             backgroundColor: isHovered ? 'rgba(255, 255, 255, 0.2)' : 'rgba(255, 255, 255, 0.1)'
                         }}
-                        className='w-14 h-14 rounded-full backdrop-blur-xl flex items-center justify-center text-white border border-white/20 transition-all duration-300'
+                        className='w-12 h-12 rounded-full backdrop-blur-xl flex items-center justify-center text-white border border-white/20 transition-all duration-300'
                     >
-                        <ArrowUpRight size={28} />
+                        <ArrowUpRight size={24} />
                     </motion.div>
                 </div>
 
-                <div className='space-y-4'>
+                <div className='space-y-3'>
                     <motion.div
                         animate={{ x: isHovered ? 10 : 0 }}
                         transition={{ duration: 0.4 }}
-                        className='inline-block py-1.5 px-4 rounded-full bg-white/10 backdrop-blur-xl border border-white/10 text-white/90 text-xs font-semibold tracking-widest uppercase'
+                        className='inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur-xl border border-white/10 text-white/90 text-[10px] font-semibold tracking-widest uppercase'
                     >
                         {project.category}
                     </motion.div>
                     <motion.h3
                         animate={{ x: isHovered ? 10 : 0 }}
                         transition={{ duration: 0.4, delay: 0.05 }}
-                        className='text-3xl lg:text-4xl font-bold text-white leading-tight tracking-tight'
+                        className='text-2xl lg:text-3xl font-bold text-white leading-tight tracking-tight'
                     >
                         {project.title}
                     </motion.h3>
@@ -126,21 +162,34 @@ function ProjectCard({ project, index }) {
 }
 
 export default function Portfolio() {
-    const controls = useAnimationControls();
+    const controls1 = useAnimationControls();
+    const controls2 = useAnimationControls();
 
     useEffect(() => {
-        controls.start({
+        // Row 1: Right to Left (0 to -50%)
+        controls1.start({
             x: "-50%",
             transition: {
-                duration: 40,
+                duration: 32,
                 ease: "linear",
                 repeat: Infinity,
             }
         });
-    }, [controls]);
+
+        // Row 2: Left to Right (-50% to 0)
+        // Start at -50% and move to 0 for reverse effect relative to content loop
+        controls2.start({
+            x: "0%",
+            transition: {
+                duration: 32,
+                ease: "linear",
+                repeat: Infinity,
+            }
+        });
+    }, [controls1, controls2]);
 
     return (
-        <section className='relative bg-[#fdfdfd] py-32 overflow-hidden'>
+        <section className='relative bg-[#fafafa] py-32 overflow-hidden'>
             {/* Background elements */}
             <FloatingElement color="bg-orange-100" size="500px" top="-10%" right="0" delay={0} />
             <FloatingElement color="bg-blue-100" size="500px" bottom="0" left="0" delay={2} />
@@ -148,8 +197,8 @@ export default function Portfolio() {
             <MetallicShape className="-top-20 -right-20" delay={0} size={500} />
             <MetallicShape className="-bottom-32 left-10" delay={5} size={300} />
 
-            <div className='container mx-auto max-w-7xl relative z-10 px-4'>
-                <div className='mb-16 flex flex-col items-center text-center'>
+            <div className='container mx-auto max-w-7xl relative z-10 px-4 mb-16'>
+                <div className='flex flex-col items-center text-center'>
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -216,26 +265,34 @@ export default function Portfolio() {
                 </div>
             </div>
 
-            {/* Marquee Container */}
+            {/* Marquee Container 1 - Right to Left */}
             <div
-                className='relative w-full overflow-hidden'
-                onMouseEnter={() => controls.stop()}
-                onMouseLeave={() => controls.start({
-                    x: "-50%",
-                    transition: {
-                        duration: 40,
-                        ease: "linear",
-                        repeat: Infinity,
-                    }
-                })}
+                className='relative w-full overflow-hidden mb-8'
             >
                 <div className="flex gap-8 pl-4 md:pl-20 min-w-max">
                     <motion.div
                         className="flex gap-8"
-                        animate={controls}
+                        animate={controls1}
                     >
-                        {marqueeProjects.map((project, index) => (
-                            <ProjectCard key={`${project.id}-${index}`} project={project} index={index} />
+                        {marqueeRow1.map((project, index) => (
+                            <ProjectCard key={`row1-${project.id}-${index}`} project={project} index={index} />
+                        ))}
+                    </motion.div>
+                </div>
+            </div>
+
+            {/* Marquee Container 2 - Left to Right */}
+            <div
+                className='relative w-full overflow-hidden'
+            >
+                <div className="flex gap-8 pl-4 md:pl-20 min-w-max">
+                    <motion.div
+                        className="flex gap-8"
+                        initial={{ x: "-50%" }}
+                        animate={controls2}
+                    >
+                        {marqueeRow2.map((project, index) => (
+                            <ProjectCard key={`row2-${project.id}-${index}`} project={project} index={index} />
                         ))}
                     </motion.div>
                 </div>
