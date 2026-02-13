@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { motion, useMotionValue, useTransform, useScroll, useSpring } from 'framer-motion';
 import { Lightbulb, Palette, Code2, Rocket, ArrowUpRight } from 'lucide-react';
@@ -66,10 +66,10 @@ function MetallicShape({ delay = 0, className, size = 300 }) {
                         <stop offset="100%" stopColor="#e2e8f0" />
                     </linearGradient>
                     <filter id="glow">
-                        <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+                        <feGaussianBlur stdDeviation="5" result="coloredBlur" />
                         <feMerge>
-                            <feMergeNode in="coloredBlur"/>
-                            <feMergeNode in="SourceGraphic"/>
+                            <feMergeNode in="coloredBlur" />
+                            <feMergeNode in="SourceGraphic" />
                         </feMerge>
                     </filter>
                 </defs>
@@ -142,10 +142,10 @@ function ServiceCard({ service, index }) {
                 'absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-br',
                 service.gradient
             )} />
-            
+
             <div className='relative z-10 h-full flex flex-col'>
                 <div className='flex justify-between items-start mb-12'>
-                    <motion.div 
+                    <motion.div
                         whileHover={{ scale: 1.1, rotate: 5 }}
                         className='p-4 rounded-2xl bg-slate-50 border border-black/5 text-black transition-colors group-hover:bg-white group-hover:border-black/10'
                     >
@@ -155,7 +155,7 @@ function ServiceCard({ service, index }) {
                         <ArrowUpRight className='text-black size={6}' />
                     </div>
                 </div>
-                
+
                 <div className='mt-auto'>
                     <h3 className='text-2xl font-bold text-black mb-4 group-hover:translate-x-1 transition-transform duration-500'>
                         {service.title}
@@ -192,17 +192,56 @@ export default function Services() {
                     >
                         Our Expertise
                     </motion.div>
-                    
-                    <motion.h2 
+
+                    <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         className='text-5xl md:text-6xl font-bold mb-8 text-black tracking-tight'
                     >
-                        Solutions built for the <span className='text-orange-600'>future</span>.
+                        <span className="relative inline-block">
+                            <span className="metallic-shine">Solutions built for the</span>
+                        </span>{" "}
+                        <span className='text-orange-600'>future</span>
+                        <span className="period-glow text-orange-500">.</span>
+
+                        <style jsx>{`
+                            .metallic-shine {
+                                background: linear-gradient(
+                                    90deg, 
+                                    rgb(0, 0, 0) 0%, 
+                                    rgb(0, 0, 0) 45%, 
+                                    rgb(226, 232, 240) 50%, 
+                                    rgb(0, 0, 0) 55%, 
+                                    rgb(0, 0, 0) 100%
+                                );
+                                background-size: 200% 100%;
+                                -webkit-background-clip: text;
+                                -webkit-text-fill-color: transparent;
+                                animation: shine 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+                                animation-iteration-count: 1;
+                                animation-delay: 0.5s;
+                                display: inline-block;
+                            }
+
+                            .period-glow {
+                                color: #ffedd5;
+                                text-shadow: 0 0 10px rgba(249, 115, 22, 0.4), 0 0 20px rgba(249, 115, 22, 0.2);
+                                font-weight: 900;
+                            }
+
+                            @keyframes shine {
+                                0% {
+                                    background-position: 200% 0%;
+                                }
+                                100% {
+                                    background-position: -200% 0%;
+                                }
+                            }
+                        `}</style>
                     </motion.h2>
-                    
-                    <motion.p 
+
+                    <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
