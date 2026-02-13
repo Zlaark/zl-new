@@ -4,6 +4,7 @@ import { motion, useMotionValue } from 'framer-motion';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { ArrowRight } from 'lucide-react';
+import HeroBackground from './HeroBackground';
 
 export default function Hero() {
     const mouseX = useMotionValue(0);
@@ -77,10 +78,8 @@ export default function Hero() {
 
     return (
         <section ref={containerRef} className='relative min-h-screen flex items-center justify-center overflow-hidden bg-white pt-48'>
-            {/* Subtle Background */}
-            <div className='absolute inset-0 z-0 overflow-hidden pointer-events-none'>
-                <div className='absolute inset-0 bg-[url(/grid.svg)] bg-center opacity-[0.03]' />
-            </div>
+            {/* Animated Background Component */}
+            <HeroBackground />
 
             <div className='container relative z-10 px-6 mx-auto'>
                 <div className='flex flex-col items-center text-center'>
