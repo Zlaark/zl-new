@@ -82,7 +82,7 @@ export default function AboutStory() {
                             />
 
                             <div className="absolute inset-0 flex items-center justify-center p-12">
-                                <div className="text-center">
+                                <div className="text-center relative">
                                     <div className="text-6xl font-bold text-black/5 mb-4 select-none uppercase tracking-tighter">Zlaark</div>
                                     <div className="h-0.5 w-12 bg-orange-500 mx-auto rounded-full" />
                                 </div>

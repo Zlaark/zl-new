@@ -1,17 +1,23 @@
 "use client";
+import React from 'react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 import { MetallicShape } from '@/components/ui/MetallicShape';
 import { FloatingElement } from '@/components/ui/FloatingElement';
 
 export default function PageHero({ title, subtitle }) {
     return (
-        <section className="relative pt-48 pb-24 overflow-hidden bg-white">
+        <section className="relative pt-48 pb-24 overflow-hidden bg-white min-h-[80vh] flex items-center">
             {/* Background elements */}
             <FloatingElement color="bg-orange-100" size="600px" top="-10%" right="-5%" delay={0} />
             <FloatingElement color="bg-blue-100" size="500px" bottom="-10%" left="-5%" delay={2} />
-            <MetallicShape className="top-0 right-0 transform translate-x-1/4 -translate-y-1/4 opacity-40" delay={0} size={600} />
-            <MetallicShape className="bottom-0 left-0 transform -translate-x-1/4 translate-y-1/4 rotate-180 opacity-40" delay={5} size={500} />
+
+            {/* 3D Side Elements - Left */}
+            <MetallicShape className="top-20 -left-20 opacity-40 rotate-12 scale-110" delay={0} size={400} />
+            <MetallicShape className="bottom-40 -left-10 opacity-30 -rotate-12 scale-90" delay={2} size={300} />
+
+            {/* 3D Side Elements - Right */}
+            <MetallicShape className="top-40 -right-20 opacity-40 -rotate-45 scale-125" delay={1} size={500} />
+            <MetallicShape className="bottom-20 -right-10 opacity-30 rotate-12 scale-75" delay={3} size={350} />
 
             <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-30" />
 
@@ -21,7 +27,7 @@ export default function PageHero({ title, subtitle }) {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                        className="text-5xl md:text-7xl lg:text-8xl font-bold text-slate-900 mb-8 tracking-tight"
+                        className="text-6xl md:text-8xl lg:text-9xl font-bold text-slate-900 mb-8 tracking-tighter"
                     >
                         <span className="relative inline-block">
                             <span className="metallic-shine">{title}</span>
@@ -41,7 +47,7 @@ export default function PageHero({ title, subtitle }) {
                                 -webkit-background-clip: text;
                                 -webkit-text-fill-color: transparent;
                                 animation: shine 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-                                animation-iteration-count: 1;
+                                animation-iteration-count: Infinity;
                                 animation-delay: 0.5s;
                                 display: inline-block;
                                 padding-bottom: 0.15em;
@@ -50,12 +56,8 @@ export default function PageHero({ title, subtitle }) {
                             }
 
                             @keyframes shine {
-                                0% {
-                                    background-position: 200% 0%;
-                                }
-                                100% {
-                                    background-position: -200% 0%;
-                                }
+                                0% { background-position: 200% 0%; }
+                                100% { background-position: -200% 0%; }
                             }
                         `}</style>
                     </motion.h1>
