@@ -1,16 +1,19 @@
 "use client";
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { MetallicShape } from '@/components/ui/MetallicShape';
+import { FloatingElement } from '@/components/ui/FloatingElement';
 
 export default function PageHero({ title, subtitle, breadcrumbs = [] }) {
     return (
-        <section className="relative pt-48 pb-24 overflow-hidden bg-bg-primary">
-            {/* Animated Background - Matches Homepage Hero but subtler */}
-            <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
-                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-amber-100/40 rounded-full blur-3xl opacity-60 translate-x-1/2 -translate-y-1/2" />
-                <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-orange-100/40 rounded-full blur-3xl opacity-60 -translate-x-1/2 -translate-y-1/2" />
-                <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
-            </div>
+        <section className="relative pt-48 pb-24 overflow-hidden bg-white">
+            {/* Background elements */}
+            <FloatingElement color="bg-orange-100" size="600px" top="-10%" right="-5%" delay={0} />
+            <FloatingElement color="bg-blue-100" size="500px" bottom="-10%" left="-5%" delay={2} />
+            <MetallicShape className="top-0 right-0 transform translate-x-1/4 -translate-y-1/4 opacity-40" delay={0} size={600} />
+            <MetallicShape className="bottom-0 left-0 transform -translate-x-1/4 translate-y-1/4 rotate-180 opacity-40" delay={5} size={500} />
+
+            <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-30" />
 
             <div className="container mx-auto px-6 relative z-10">
                 {breadcrumbs.length > 0 && (
@@ -41,7 +44,38 @@ export default function PageHero({ title, subtitle, breadcrumbs = [] }) {
                         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                         className="text-5xl md:text-7xl lg:text-8xl font-bold text-slate-900 mb-8 tracking-tight"
                     >
-                        {title}
+                        <span className="relative inline-block">
+                            <span className="metallic-shine">{title}</span>
+                        </span>
+
+                        <style jsx>{`
+                            .metallic-shine {
+                                background: linear-gradient(
+                                    90deg, 
+                                    rgb(15, 23, 42) 0%, 
+                                    rgb(15, 23, 42) 45%, 
+                                    rgb(249, 115, 22) 50%, 
+                                    rgb(15, 23, 42) 55%, 
+                                    rgb(15, 23, 42) 100%
+                                );
+                                background-size: 200% 100%;
+                                -webkit-background-clip: text;
+                                -webkit-text-fill-color: transparent;
+                                animation: shine 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+                                animation-iteration-count: 1;
+                                animation-delay: 0.5s;
+                                display: inline-block;
+                            }
+
+                            @keyframes shine {
+                                0% {
+                                    background-position: 200% 0%;
+                                }
+                                100% {
+                                    background-position: -200% 0%;
+                                }
+                            }
+                        `}</style>
                     </motion.h1>
 
                     {subtitle && (

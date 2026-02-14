@@ -12,7 +12,7 @@ export const metadata = { title: 'About | Zlaark', description: aboutPage.heroSu
 
 export default function AboutPage() {
     return (
-        <>
+        <div className="bg-white">
             <Header />
             <main>
                 <PageHero title={aboutPage.heroTitle} subtitle={aboutPage.heroSubtitle} breadcrumbs={[{ label: 'About' }]} />
@@ -23,6 +23,6 @@ export default function AboutPage() {
             </main>
             <Footer />
             <BackToTop />
-        </>
+        </div>
     );
 }
