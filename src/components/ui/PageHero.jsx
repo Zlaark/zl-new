@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { MetallicShape } from '@/components/ui/MetallicShape';
 import { FloatingElement } from '@/components/ui/FloatingElement';
 
-export default function PageHero({ title, subtitle, breadcrumbs = [] }) {
+export default function PageHero({ title, subtitle }) {
     return (
         <section className="relative pt-48 pb-24 overflow-hidden bg-white">
             {/* Background elements */}
@@ -16,27 +16,6 @@ export default function PageHero({ title, subtitle, breadcrumbs = [] }) {
             <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-30" />
 
             <div className="container mx-auto px-6 relative z-10">
-                {breadcrumbs.length > 0 && (
-                    <motion.nav
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="flex items-center gap-2 text-sm text-slate-500 mb-8 font-medium"
-                    >
-                        <Link href="/" className="hover:text-orange-600 transition-colors">Home</Link>
-                        {breadcrumbs.map((crumb, i) => (
-                            <span key={i} className="flex items-center gap-2">
-                                <span className="text-slate-300">/</span>
-                                {crumb.href ? (
-                                    <Link href={crumb.href} className="hover:text-orange-600 transition-colors">{crumb.label}</Link>
-                                ) : (
-                                    <span className="text-slate-900">{crumb.label}</span>
-                                )}
-                            </span>
-                        ))}
-                    </motion.nav>
-                )}
-
                 <div className="max-w-4xl">
                     <motion.h1
                         initial={{ opacity: 0, y: 30 }}
@@ -65,6 +44,9 @@ export default function PageHero({ title, subtitle, breadcrumbs = [] }) {
                                 animation-iteration-count: 1;
                                 animation-delay: 0.5s;
                                 display: inline-block;
+                                padding-bottom: 0.15em;
+                                margin-bottom: -0.15em;
+                                line-height: 1.1;
                             }
 
                             @keyframes shine {
