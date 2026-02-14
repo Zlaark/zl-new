@@ -34,7 +34,7 @@ export default function Header() {
                                 priority
                             />
                         </div>
-                        <span className="font-bold text-lg tracking-tight text-black group-hover:opacity-80 transition-opacity">Zlaark</span>
+                        <span className="font-bold text-lg tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-500 group-hover:opacity-80 transition-opacity">Zlaark</span>
                     </Link>
 
                     {/* Divider */}

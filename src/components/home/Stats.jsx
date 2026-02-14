@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from 'react';
 import { motion, useInView, useMotionValue, useSpring } from 'framer-motion';
+import { MetallicShape } from '@/components/ui/MetallicShape';
+import { FloatingElement } from '@/components/ui/FloatingElement';
 
 const stats = [
     {
@@ -58,24 +60,32 @@ const Counter = ({ value, suffix }) => {
 
 export default function Stats() {
     return (
-        <section className="py-20 bg-white border-y border-black/5">
-            <div className="container mx-auto px-6">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-                    {stats.map((stat) => (
-                        <motion.div
-                            key={stat.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: stat.id * 0.1 }}
-                            className="text-center"
-                        >
-                            <div className="mb-2">
-                                <Counter value={stat.value} suffix={stat.suffix} />
-                            </div>
-                            <p className="text-black/60 font-medium text-lg">{stat.label}</p>
-                        </motion.div>
-                    ))}
+        <section className="relative py-24 bg-white overflow-hidden">
+            {/* Background elements */}
+            <FloatingElement color="bg-orange-100" size="400px" top="-10%" right="10%" delay={0} />
+            <FloatingElement color="bg-blue-100" size="300px" bottom="0" left="0" delay={2} />
+            <MetallicShape className="-top-20 -left-20" delay={0} size={400} />
+            <MetallicShape className="-bottom-20 -right-20" delay={5} size={300} />
+
+            <div className="container mx-auto px-6 relative z-10">
+                <div className="max-w-5xl mx-auto backdrop-blur-md bg-white/40 border border-black/5 rounded-[2.5rem] p-12 md:p-20 shadow-xl">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-16">
+                        {stats.map((stat) => (
+                            <motion.div
+                                key={stat.id}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: stat.id * 0.1 }}
+                                className="text-center group"
+                            >
+                                <div className="mb-4 transform transition-transform group-hover:scale-110 duration-500">
+                                    <Counter value={stat.value} suffix={stat.suffix} />
+                                </div>
+                                <p className="text-black/40 font-semibold text-sm uppercase tracking-widest">{stat.label}</p>
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

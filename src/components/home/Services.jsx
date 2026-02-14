@@ -108,10 +108,10 @@ function ServiceCard({ service, index }) {
 
 export default function Services() {
     return (
-        <section className='section relative overflow-hidden bg-[#fafafa] py-32'>
-            <FloatingElement color="bg-orange-400" size="400px" top="-10%" left="-5%" delay={0} />
-            <FloatingElement color="bg-blue-400" size="300px" top="60%" left="80%" delay={2} />
-            <FloatingElement color="bg-purple-400" size="250px" top="20%" left="70%" delay={4} />
+        <section className='section relative overflow-hidden bg-white py-32'>
+            <FloatingElement color="bg-orange-100" size="400px" top="-10%" left="-5%" delay={0} />
+            <FloatingElement color="bg-blue-100" size="300px" top="60%" left="80%" delay={2} />
+            <FloatingElement color="bg-purple-100" size="250px" top="20%" left="70%" delay={4} />
 
             <MetallicShape className="-top-20 -right-20" delay={0} size={500} />
             <MetallicShape className="top-1/2 -left-32" delay={5} size={400} />
@@ -138,7 +138,6 @@ export default function Services() {
                             <span className="metallic-shine">Solutions built for the</span>
                         </span>{" "}
                         <span className='text-orange-600'>future</span>
-                        <span className="period-glow text-orange-500">.</span>
 
                         <style jsx>{`
                             .metallic-shine {
