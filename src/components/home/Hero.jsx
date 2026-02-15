@@ -80,7 +80,7 @@ export default function Hero() {
     };
 
     return (
-        <section ref={containerRef} className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-transparent pt-32 pb-20">
+        <section ref={containerRef} className="relative min-h-[90vh] flex justify-center overflow-hidden bg-transparent pt-48 pb-20">
             {/* Animated Background */}
             <HeroBackground />
 
@@ -97,29 +97,28 @@ export default function Hero() {
                     >
                         {/* Badge */}
                         <motion.div variants={fadeInUp} className='mb-8'>
-                            <span className='inline-flex items-center gap-3 py-2 px-6 rounded-full border border-orange-100 bg-orange-50/50 backdrop-blur-sm text-xs font-bold tracking-[0.2em] uppercase text-orange-500'>
-                                <span className='w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse' />
-                                Digital Agency
+                            <span className='inline-flex items-center gap-2 py-2 px-6 rounded-full border border-orange-100 bg-white text-xs font-bold tracking-[0.2em] uppercase text-slate-900 shadow-sm'>
+                                <span className='text-orange-500'>&gt;</span> DIGITAL AGENCY <span className='text-orange-500'>&lt;</span>
                             </span>
                         </motion.div>
 
                         {/* Headline */}
                         <motion.h1
                             variants={fadeInUp}
-                            className='text-6xl md:text-8xl lg:text-9xl font-extrabold tracking-tight text-slate-900 mb-8 leading-[0.9] flex flex-col items-center'
+                            className='text-3xl md:text-5xl lg:text-7xl font-bold tracking-tight text-slate-900 mb-6 leading-[0.9] flex flex-col items-center'
                         >
-                            <span className="block">WE CRAFT</span>
-                            <span className='text-orange-500 italic font-black relative'>
-                                DIGITAL LEGACIES
+                            <span className="block">We Craft</span>
+                            <span className='text-orange-500 italic font-medium'>
+                                Digital Legacies
                             </span>
                         </motion.h1>
 
                         {/* Description */}
                         <motion.p
                             variants={fadeInUp}
-                            className='text-lg md:text-xl text-slate-600 max-w-2xl mb-12 leading-relaxed font-medium'
+                            className='text-base md:text-lg text-slate-600 max-w-2xl mb-12 leading-relaxed font-medium'
                         >
-                            We combine strategy, design, and technology to help ambitious brands stand out & create meaningful digital experiences.
+                            We combine strategy, design, and technology to help ambitious brands <br className="hidden md:block" /> stand out & create meaningful digital experiences.
                         </motion.p>
 
                         {/* CTA Buttons */}
