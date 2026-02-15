@@ -36,46 +36,24 @@ export default function Hero() {
         },
     };
 
-    const MagneticButton = ({ children, href, variant = 'primary' }) => {
-        const ref = useRef(null);
-        const [position, setPosition] = useState({ x: 0, y: 0 });
-
-        const handleMouse = (e) => {
-            const { clientX, clientY } = e;
-            const { height, width, left, top } = ref.current.getBoundingClientRect();
-            const middleX = clientX - (left + width / 2);
-            const middleY = clientY - (top + height / 2);
-            setPosition({ x: middleX * 0.2, y: middleY * 0.2 });
-        };
-
-        const reset = () => {
-            setPosition({ x: 0, y: 0 });
-        };
-
+    const HeroButton = ({ children, href, variant = 'primary' }) => {
         return (
-            <motion.div
-                ref={ref}
-                onMouseMove={handleMouse}
-                onMouseLeave={reset}
-                animate={{ x: position.x, y: position.y }}
-                transition={{ type: 'spring', stiffness: 150, damping: 15, mass: 0.1 }}
-                className="relative"
-            >
+            <div className="relative">
                 <Link
                     href={href}
                     className={cn(
-                        'group relative flex items-center justify-center px-8 py-4 rounded-md font-bold text-sm tracking-widest uppercase transition-all duration-300 overflow-hidden',
+                        'group relative flex items-center justify-center px-6 py-3 rounded-md font-bold text-sm tracking-widest uppercase transition-all duration-300 overflow-hidden',
                         variant === 'primary'
-                            ? 'bg-orange-500 text-white shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40 hover:-translate-y-1'
-                            : 'bg-[#1a1c2e] text-white shadow-lg shadow-blue-900/20 hover:shadow-xl hover:shadow-blue-900/30 hover:-translate-y-1'
+                            ? 'bg-orange-500 text-white shadow-lg shadow-orange-500/30'
+                            : 'bg-[#1a1c2e] text-white shadow-lg shadow-blue-900/20'
                     )}
                 >
                     <span className="relative z-10 flex items-center gap-2">
                         {children}
-                        {variant === 'primary' && <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />}
+                        {variant === 'primary' && <ArrowRight size={18} />}
                     </span>
                 </Link>
-            </motion.div>
+            </div>
         );
     };
 
@@ -123,12 +101,12 @@ export default function Hero() {
 
                         {/* CTA Buttons */}
                         <motion.div variants={fadeInUp} className='flex flex-col sm:flex-row gap-6 mt-4'>
-                            <MagneticButton href='/contact'>
+                            <HeroButton href='/contact'>
                                 Discuss your ideas
-                            </MagneticButton>
-                            <MagneticButton href='/services' variant='secondary'>
+                            </HeroButton>
+                            <HeroButton href='/services' variant='secondary'>
                                 View services
-                            </MagneticButton>
+                            </HeroButton>
                         </motion.div>
                     </motion.div>
                 </div>
@@ -136,5 +114,3 @@ export default function Hero() {
         </section>
     );
 }
-
-
