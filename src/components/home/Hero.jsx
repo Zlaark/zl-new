@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { ArrowRight } from 'lucide-react';
@@ -8,12 +8,6 @@ import HeroBackground from './HeroBackground';
 
 export default function Hero() {
     const containerRef = useRef(null);
-    const { scrollY } = useScroll();
-
-    // Parallax Transforms
-    const y1 = useTransform(scrollY, [0, 500], [0, 200]);
-    const opacity = useTransform(scrollY, [0, 300], [1, 0]);
-    const scale = useTransform(scrollY, [0, 500], [1, 0.9]);
 
     const fadeInUp = {
         hidden: { opacity: 0, y: 30, filter: 'blur(10px)' },
@@ -63,7 +57,6 @@ export default function Hero() {
             <HeroBackground />
 
             <motion.div
-                style={{ y: y1, opacity, scale }}
                 className='container relative z-10 px-6 mx-auto'
             >
                 <div className='flex flex-col items-center text-center'>
