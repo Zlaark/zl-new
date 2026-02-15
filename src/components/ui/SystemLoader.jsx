@@ -54,16 +54,13 @@ const TechCore = () => {
 
             <mesh ref={ring2Ref} rotation={[0, Math.PI / 4, 0]}>
                 <torusGeometry args={[2.2, 0.02, 16, 100]} />
-                <meshStandardMaterial color="#ffffff" emissive="#4facfe" emissiveIntensity={3} transparent opacity={0.4} />
+                <meshStandardMaterial color="#3b82f6" emissive="#3b82f6" emissiveIntensity={3} transparent opacity={0.4} /> {/* Adjusted blue for light theme contrast */}
             </mesh>
 
             <mesh ref={ring3Ref} rotation={[Math.PI / 3, Math.PI / 3, 0]}>
                 <torusGeometry args={[2.6, 0.01, 16, 100]} />
                 <meshStandardMaterial color="#ff006e" emissive="#ff006e" emissiveIntensity={4} transparent opacity={0.3} />
             </mesh>
-
-            {/* Particle Glow */}
-            <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
         </group>
     );
 };
@@ -111,21 +108,21 @@ const SystemLoader = ({ onComplete }) => {
             {isVisible && (
                 <motion.div
                     initial={{ opacity: 1 }}
-                    exit={{ 
-                        opacity: 0, 
-                        scale: 2, 
-                        filter: "brightness(5) blur(40px)",
+                    exit={{
+                        opacity: 0,
+                        scale: 2,
+                        filter: "brightness(2) blur(20px)", /* Adjusted brightness filter for light theme exit */
                         transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] }
                     }}
-                    className="fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center overflow-hidden"
+                    className="fixed inset-0 z-[100] bg-white flex flex-col items-center justify-center overflow-hidden" /* bg-white */
                 >
                     {/* 3D Canvas Container */}
                     <div className="absolute inset-0 z-0">
                         <Canvas>
                             <PerspectiveCamera makeDefault position={[0, 0, 8]} />
-                            <ambientLight intensity={0.2} />
-                            <pointLight position={[10, 10, 10]} intensity={1.5} color="#ff6b00" />
-                            <pointLight position={[-10, -10, -10]} intensity={1} color="#4facfe" />
+                            <ambientLight intensity={0.8} /> {/* Increased ambient light */}
+                            <pointLight position={[10, 10, 10]} intensity={2} color="#ff6b00" />
+                            <pointLight position={[-10, -10, -10]} intensity={1.5} color="#3b82f6" />
                             <TechCore />
                         </Canvas>
                     </div>
@@ -137,20 +134,20 @@ const SystemLoader = ({ onComplete }) => {
                             animate={{ opacity: 1, y: 0 }}
                             className="flex flex-col items-center mb-12"
                         >
-                            <div className="text-orange-500 font-mono text-[10px] tracking-[0.5em] uppercase mb-4 opacity-70">
+                            <div className="text-orange-600 font-mono text-[10px] tracking-[0.5em] uppercase mb-4 opacity-70">
                                 Global Transformation in Progress
                             </div>
-                            <h2 className="text-white font-bold text-4xl tracking-tighter mb-2 italic">ZLAARK</h2>
+                            <h2 className="text-stone-900 font-bold text-4xl tracking-tighter mb-2 italic">ZLAARK</h2> {/* text-stone-900 */}
                             <div className="w-12 h-0.5 bg-gradient-to-r from-orange-500 to-transparent" />
                         </motion.div>
 
                         <div className="w-full">
-                            <div className="flex justify-between items-end mb-4 font-mono text-[10px] tracking-widest text-orange-500/80">
+                            <div className="flex justify-between items-end mb-4 font-mono text-[10px] tracking-widest text-stone-500"> {/* text-stone-500 */}
                                 <span>{status}</span>
                                 <span>{Math.floor(progress)}%</span>
                             </div>
 
-                            <div className="h-[2px] w-full bg-white/10 rounded-full overflow-hidden relative">
+                            <div className="h-[2px] w-full bg-stone-200 rounded-full overflow-hidden relative"> {/* bg-stone-200 */}
                                 <motion.div
                                     initial={{ width: 0 }}
                                     animate={{ width: `${progress}%` }}
@@ -160,19 +157,19 @@ const SystemLoader = ({ onComplete }) => {
                         </div>
                     </div>
 
-                    {/* Ambient Light Burst Background */}
+                    {/* Ambient Light Burst Background - Adjusted for Light Theme */}
                     <div className="absolute inset-0 pointer-events-none">
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-radial-gradient from-orange-500/10 via-transparent to-transparent opacity-50" />
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-radial-gradient from-orange-500/5 via-transparent to-transparent opacity-50" />
                     </div>
 
                     {/* Futuristic Metadata */}
-                    <div className="absolute bottom-12 left-12 font-mono text-[9px] text-white/30 tracking-[0.3em] uppercase">
+                    <div className="absolute bottom-12 left-12 font-mono text-[9px] text-stone-400 tracking-[0.3em] uppercase"> {/* text-stone-400 */}
                         Core Presence established // 0xAF339
                     </div>
                 </motion.div>
             )}
         </AnimatePresence>
     );
-
 };
+
 export default SystemLoader;

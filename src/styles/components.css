@@ -8,9 +8,11 @@
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding-top: 80px;
+    padding-top: 60px;
+    padding-bottom: 15rem;
     position: relative;
     overflow: hidden;
+    background: var(--hero-gradient);
 }
 
 .hero::before {
@@ -20,9 +22,9 @@
     left: -50%;
     width: 200%;
     height: 200%;
-    /* Orange/Amber Gradients */
-    background: radial-gradient(circle at 30% 30%, rgba(249, 115, 22, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 70% 70%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
+    /* Orange/Amber Gradients - Adjusted for Light Mode */
+    background: radial-gradient(circle at 30% 30%, rgba(249, 115, 22, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 70%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
     animation: gradientMove 15s ease infinite;
 }
 
@@ -37,6 +39,7 @@
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 24px;
+    color: var(--text-primary);
 }
 
 .hero-headline-accent {
@@ -100,13 +103,14 @@
     border-radius: 50%;
     filter: blur(60px);
     animation: float 8s ease-in-out infinite;
+    mix-blend-mode: multiply; /* Better for light mode blending */
 }
 
 .hero-orb-1 {
     width: 400px;
     height: 400px;
     /* Orange Orb */
-    background: rgba(249, 115, 22, 0.2);
+    background: rgba(249, 115, 22, 0.25);
     top: 0;
     right: 0;
 }
@@ -115,7 +119,7 @@
     width: 300px;
     height: 300px;
     /* Amber Orb */
-    background: rgba(245, 158, 11, 0.2);
+    background: rgba(245, 158, 11, 0.25);
     bottom: 0;
     left: 0;
     animation-delay: -4s;
@@ -147,6 +151,7 @@
     transition: all var(--transition-medium);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); /* Soft shadow for light mode */
 }
 
 .service-card::before {
@@ -163,7 +168,7 @@
 
 .service-card:hover {
     background: var(--bg-card-hover);
-    border-color: var(--border-color-hover);
+    border-color: rgba(249, 115, 22, 0.2);
     transform: translateY(-8px);
     box-shadow: var(--shadow-glow);
 }
@@ -176,12 +181,14 @@
     font-size: 3rem;
     margin-bottom: 24px;
     display: block;
+    color: var(--accent-primary);
 }
 
 .service-title {
     font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: 12px;
+    color: var(--text-primary);
 }
 
 .service-description {
@@ -229,6 +236,7 @@
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 8px;
+    color: var(--text-primary);
 }
 
 .about-content h3 {
@@ -258,11 +266,13 @@
 .about-value-icon {
     font-size: 1.5rem;
     flex-shrink: 0;
+    color: var(--accent-primary);
 }
 
 .about-value-title {
     font-weight: 600;
     margin-bottom: 4px;
+    color: var(--text-primary);
 }
 
 .about-value-desc {
@@ -284,6 +294,7 @@
     padding: 32px;
     text-align: center;
     transition: all var(--transition-medium);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
 .about-achievement:hover {
@@ -334,6 +345,7 @@
     overflow: hidden;
     transition: all var(--transition-medium);
     cursor: pointer;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
 .portfolio-card:hover {
@@ -345,6 +357,7 @@
     height: 200px;
     position: relative;
     overflow: hidden;
+    background: #e2e8f0;
 }
 
 .portfolio-image-placeholder {
@@ -354,7 +367,7 @@
     align-items: center;
     justify-content: center;
     font-size: 3rem;
-    color: white;
+    color: #cbd5e1;
 }
 
 .portfolio-info {
@@ -373,6 +386,7 @@
     font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: 12px;
+    color: var(--text-primary);
 }
 
 .portfolio-description {
@@ -422,6 +436,7 @@
     border-radius: var(--radius-lg);
     padding: 40px;
     transition: all var(--transition-medium);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
 .testimonial-card:hover {
@@ -459,11 +474,13 @@
     justify-content: center;
     font-weight: 700;
     font-size: 1.25rem;
+    color: white;
 }
 
 .testimonial-name {
     font-weight: 600;
     margin-bottom: 2px;
+    color: var(--text-primary);
 }
 
 .testimonial-role {
@@ -488,6 +505,7 @@
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 16px;
+    color: var(--text-primary);
 }
 
 .contact-info>p {
@@ -519,6 +537,7 @@
     align-items: center;
     justify-content: center;
     font-size: 1.25rem;
+    color: var(--accent-primary);
 }
 
 .contact-detail-text {
@@ -540,11 +559,13 @@
     align-items: center;
     justify-content: center;
     transition: all var(--transition-fast);
+    color: var(--text-muted);
 }
 
 .contact-social:hover {
     background: var(--accent-primary);
     border-color: var(--accent-primary);
+    color: white;
     transform: translateY(-2px);
 }
 
@@ -554,6 +575,7 @@
     border: 1px solid var(--border-color);
     border-radius: var(--radius-xl);
     padding: 48px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05); /* Added shadow */
 }
 
 .form-group {
@@ -582,6 +604,7 @@
 .form-textarea:focus {
     outline: none;
     border-color: var(--accent-primary);
+    background: white;
     box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
 }
 
@@ -644,7 +667,7 @@
 }
 
 .footer-link:hover {
-    color: var(--text-primary);
+    color: var(--accent-primary);
 }
 
 .footer-bottom {
