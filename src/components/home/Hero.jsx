@@ -64,7 +64,7 @@ export default function Hero() {
                 <Link
                     href={href}
                     className={cn(
-                        'group relative flex items-center justify-center px-8 py-4 rounded-full font-bold text-sm tracking-widest uppercase transition-all duration-300 overflow-hidden',
+                        'group relative flex items-center justify-center px-8 py-4 rounded-md font-bold text-sm tracking-widest uppercase transition-all duration-300 overflow-hidden',
                         variant === 'primary'
                             ? 'bg-orange-500 text-white shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40 hover:-translate-y-1'
                             : 'bg-[#1a1c2e] text-white shadow-lg shadow-blue-900/20 hover:shadow-xl hover:shadow-blue-900/30 hover:-translate-y-1'
@@ -136,3 +136,5 @@ export default function Hero() {
         </section>
     );
 }
+
+

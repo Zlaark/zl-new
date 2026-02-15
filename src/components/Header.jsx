@@ -22,9 +22,9 @@ export default function Header() {
     return (
         <>
             <header className="fixed top-8 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
-                <div className="bg-white rounded-full shadow-sm px-4 py-3 flex items-center border border-black/5 pointer-events-auto">
+                <div className="bg-white rounded-md shadow-sm px-4 py-3 flex items-center border border-black/5 pointer-events-auto">
                     {/* Logo Section */}
-                    <Link href="/" className="flex items-center gap-3 pl-2 pr-6 py-2 hover:bg-black/5 rounded-full transition-colors group">
+                    <Link href="/" className="flex items-center gap-3 pl-2 pr-6 py-2 hover:bg-black/5 rounded-md transition-colors group">
                         <div className="relative w-6 h-6">
                             <Image
                                 src='/logo.jpg'
@@ -43,7 +43,7 @@ export default function Header() {
                     {/* Menu Section */}
                     <button
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className="px-4 py-3 hover:bg-black/5 rounded-full transition-colors text-black relative group"
+                        className="px-4 py-3 hover:bg-black/5 rounded-md transition-colors text-black relative group"
                         aria-label="Toggle Menu"
                     >
                         <Menu className="w-5 h-5" />
@@ -55,7 +55,7 @@ export default function Header() {
                     {/* CTA Section */}
                     <Link
                         href="/contact"
-                        className="bg-black text-white px-8 py-3 rounded-full font-medium text-sm hover:bg-black/80 transition-colors"
+                        className="bg-black text-white px-8 py-3 rounded-md font-medium text-sm hover:bg-black/80 transition-colors"
                     >
                         Get started
                     </Link>
@@ -95,7 +95,7 @@ export default function Header() {
                                         >
                                             {item.name}
                                             {pathname === item.href && (
-                                                <motion.div layoutId="activeDot" className="w-1.5 h-1.5 bg-black rounded-full" />
+                                                <motion.div layoutId="activeDot" className="w-1.5 h-1.5 bg-black rounded-md" />
                                             )}
                                         </Link>
                                     ))}
@@ -108,3 +108,4 @@ export default function Header() {
         </>
     );
 }
+
