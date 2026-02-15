@@ -1,4 +1,6 @@
-"use client";
+import os
+
+content = r'''"use client";
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -97,17 +99,17 @@ export default function Hero() {
                             {/* Callout Arrow & Text */}
                             <div className="hidden md:block absolute -left-[220px] top-[60%] -translate-y-1/2 w-[220px] pointer-events-none">
                                 <div className="relative h-24 w-full">
-                                    <span
+                                    <span 
                                         className="absolute right-8 bottom-0 text-orange-500 text-2xl whitespace-nowrap"
                                         style={{ fontFamily: 'var(--font-reenie)' }}
                                     >
                                         Schedule a free call now
                                     </span>
-                                    <svg
-                                        className="absolute right-4 top-0 w-16 h-16 text-orange-400 transform rotate-12"
-                                        viewBox="0 0 100 100"
-                                        fill="none"
-                                        stroke="currentColor"
+                                    <svg 
+                                        className="absolute right-4 top-0 w-16 h-16 text-orange-400 transform rotate-12" 
+                                        viewBox="0 0 100 100" 
+                                        fill="none" 
+                                        stroke="currentColor" 
                                         strokeWidth="2"
                                     >
                                         <path d="M20,70 Q60,20 95,40" strokeLinecap="round" />
@@ -129,3 +131,13 @@ export default function Hero() {
         </section>
     );
 }
+'''
+
+try:
+    with open(r'src/components/home/Hero.jsx', 'w', encoding='utf-8') as f:
+        f.write(content)
+        f.flush()
+        os.fsync(f.fileno())
+    print("Hero.jsx updated successfully!")
+except Exception as e:
+    print(f"Error updating Hero.jsx: {e}")
