@@ -17,7 +17,7 @@ export default function HomeTestimonialsPreview() {
                         <FadeIn key={t.id} delay={i * 0.15}>
                             <div className="testimonial-card">
                                 <div className="testimonial-rating">{'★'.repeat(t.rating)}</div>
-                                <p className="testimonial-content">"{t.content}"</p>
+                                <p className="testimonial-content">&quot;{t.content}&quot;</p>
                                 <div className="testimonial-author">
                                     <div className="testimonial-avatar">{t.name.charAt(0)}</div>
                                     <div>

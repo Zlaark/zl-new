@@ -5,6 +5,14 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, Sphere, MeshDistortMaterial, MeshWobbleMaterial, PerspectiveCamera, Stars } from '@react-three/drei';
 import * as THREE from 'three';
 
+const statuses = [
+    "SYNCHRONIZING 3D ENGINES...",
+    "CALIBRATING HOLOGRAPHIC ARRAYS...",
+    "STABILIZING ENERGY CORE...",
+    "ACCESSING DIGITAL DIMENSIONS...",
+    "SYSTEM OPTIMIZED"
+];
+
 const TechCore = () => {
     const coreRef = useRef();
     const ring1Ref = useRef();
@@ -70,13 +78,7 @@ const SystemLoader = ({ onComplete }) => {
     const [status, setStatus] = useState("INITIALIZING NEURAL CORE...");
     const [isVisible, setIsVisible] = useState(true);
 
-    const statuses = [
-        "SYNCHRONIZING 3D ENGINES...",
-        "CALIBRATING HOLOGRAPHIC ARRAYS...",
-        "STABILIZING ENERGY CORE...",
-        "ACCESSING DIGITAL DIMENSIONS...",
-        "SYSTEM OPTIMIZED"
-    ];
+
 
     useEffect(() => {
         const timer = setInterval(() => {

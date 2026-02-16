@@ -40,7 +40,7 @@ export const TextReveal = ({ children, className, delay = 0 }) => {
     return (
         <motion.span
             ref={ref}
-            className={\inline-block overflow-hidden \\}
+            className="inline-block overflow-hidden"
             variants={container}
             initial='hidden'
             animate={isInView ? 'visible' : 'hidden'}

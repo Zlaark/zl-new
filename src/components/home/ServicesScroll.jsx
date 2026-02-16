@@ -108,7 +108,7 @@ export default function ServicesScroll() {
                                             <path d="M10,60 Q40,10 90,40" />
                                             <path d="M75,30 L90,40 L80,55" />
                                         </svg>
-                                        <span className="font-['Reenie_Beanie'] text-3xl text-orange-400 -rotate-6 block transform translate-y-2 translate-x-4">Let's get started</span>
+                                        <span className="font-['Reenie_Beanie'] text-3xl text-orange-400 -rotate-6 block transform translate-y-2 translate-x-4">Let&apos;s get started</span>
                                     </div>
                                 </div>
                             </motion.div>
