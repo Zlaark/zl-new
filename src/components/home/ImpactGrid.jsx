@@ -46,6 +46,17 @@ export default function ImpactGrid() {
         { name: "LILY WOODS", src: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&q=80", rotate: "rotate-12" }
     ];
 
+    const industries = [
+        'Education & Learning',
+        'Hospitality & Events',
+        'Lifestyle & Luxury',
+        'Finance & Fintech',
+        'Healthcare & Wellness',
+        'E-commerce & Retail'
+    ];
+
+    const duplicatedIndustries = [...industries, ...industries];
+
     return (
         <section className="py-24 bg-gray-50 px-6">
             <div className="container mx-auto max-w-6xl">
@@ -232,21 +243,37 @@ export default function ImpactGrid() {
                         </div>
                     </Card>
 
-                    {/* Industries Card (1 col) */}
-                    <Card className="flex flex-col justify-center items-center text-center shadow-sm border border-gray-100">
-                        <h3 className="text-xl font-bold text-gray-900 mb-8">Industries we work with</h3>
-                        <div className="space-y-1 w-full flex flex-col items-center">
-                            {['Education & Learning', 'Hospitality & Events', 'Lifestyle & Luxury'].map((industry, i) => (
-                                <div key={i} className="group relative py-3 px-4 rounded-lg hover:bg-orange-50 transition-colors cursor-default w-full">
-                                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-orange-500" />
+                    {/* Industries Card (1 col) - Auto Scrolling */}
+                    <Card className="flex flex-col justify-center items-center text-center shadow-sm border border-gray-100 relative overflow-hidden">
+                        <h3 className="text-xl font-bold text-gray-900 mb-8 z-10 bg-white w-full py-2">Industries we work with</h3>
+
+                        {/* Gradient Masks for Fade Effect */}
+                        <div className="absolute top-[80px] left-0 right-0 h-10 bg-gradient-to-b from-white to-transparent z-10 pointer-events-none" />
+                        <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-white to-transparent z-10 pointer-events-none" />
+
+                        <div className="h-[200px] overflow-hidden w-full relative mask-gradient-vertical">
+                            <motion.div
+                                className="flex flex-col items-center space-y-1 w-full px-8"
+                                animate={{ y: ["0%", "-50%"] }}
+                                transition={{
+                                    duration: 15,
+                                    ease: "linear",
+                                    repeat: Infinity,
+                                    repeatType: "loop"
+                                }}
+                            >
+                                {duplicatedIndustries.map((industry, i) => (
+                                    <div key={i} className="group relative py-3 px-4 rounded-lg hover:bg-orange-50 transition-colors cursor-default w-full shrink-0">
+                                        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-orange-500" />
+                                        </div>
+                                        <span className="text-[11px] font-bold text-gray-400 group-hover:text-orange-500 transition-colors uppercase tracking-widest">{industry}</span>
+                                        <div className="absolute right-4 top-1/2 -translate-y-1/2 text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-orange-500" />
+                                        </div>
                                     </div>
-                                    <span className="text-[11px] font-bold text-gray-400 group-hover:text-orange-500 transition-colors uppercase tracking-widest">{industry}</span>
-                                    <div className="absolute right-4 top-1/2 -translate-y-1/2 text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-orange-500" />
-                                    </div>
-                                </div>
-                            ))}
+                                ))}
+                            </motion.div>
                         </div>
                     </Card>
 
