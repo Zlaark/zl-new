@@ -10,6 +10,7 @@ import AgencySelection from '@/components/home/AgencySelection';
 import AgencyComparison from '@/components/home/AgencyComparison';
 import ImpactGrid from '@/components/home/ImpactGrid';
 import ServicesScroll from '@/components/home/ServicesScroll';
+import ProjectSlider from '@/components/home/ProjectSlider';
 import CTA from '@/components/home/CTA';
 import Footer from '@/components/Footer';
 import BackToTop from '@/components/BackToTop';
@@ -26,6 +27,7 @@ export default function Home() {
                 <AgencyComparison />
                 <ImpactGrid />
                 <ServicesScroll />
+                <ProjectSlider />
                 <Process />
                 <Portfolio />
                 <CTA />
