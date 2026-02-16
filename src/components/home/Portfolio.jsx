@@ -2,7 +2,7 @@
 
 import { motion, useAnimationControls } from 'framer-motion';
 import Link from 'next/link';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useRef, useState, useEffect } from 'react';
 import { MetallicShape } from '@/components/ui/MetallicShape';
@@ -197,69 +197,79 @@ export default function Portfolio() {
             <MetallicShape className="-top-20 -right-20" delay={0} size={500} />
             <MetallicShape className="-bottom-32 left-10" delay={5} size={300} />
 
-            <div className='container mx-auto max-w-7xl relative z-10 px-4 mb-16'>
-                <div className='flex flex-col items-center text-center'>
+            <div className='container mx-auto max-w-7xl relative z-10 px-4 mb-24'>
+                <div className='flex flex-col items-center text-center max-w-4xl mx-auto'>
+
+                    {/* Badge */}
                     <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className='inline-block px-4 py-1.5 mb-6 rounded-full bg-black/5 text-sm font-medium text-black/60 tracking-wider uppercase'
+                        className='mb-8'
                     >
-                        Selected Work
+                        <span className='inline-flex items-center gap-2 py-2 px-6 rounded-full border border-slate-200 bg-white text-xs font-bold tracking-[0.2em] uppercase text-slate-500 shadow-sm'>
+                            &gt; FEATURED PROJECTS &lt;
+                        </span>
                     </motion.div>
 
+                    {/* Headline */}
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className='text-5xl md:text-6xl font-bold text-black leading-[1.1] tracking-tighter mb-8'
+                        className='text-5xl md:text-7xl font-bold text-slate-900 leading-[0.95] tracking-tight mb-12'
                     >
-                        <span className="relative inline-block">
-                            <span className="metallic-shine">Digital Excellence</span>
-                        </span>{" "}
-                        <span className="text-orange-500">Redefined.</span>
-
-                        <style jsx>{`
-                            .metallic-shine {
-                                background: linear-gradient(
-                                    90deg, 
-                                    rgb(0, 0, 0) 0%, 
-                                    rgb(0, 0, 0) 45%, 
-                                    rgb(226, 232, 240) 50%, 
-                                    rgb(0, 0, 0) 55%, 
-                                    rgb(0, 0, 0) 100%
-                                );
-                                background-size: 200% 100%;
-                                -webkit-background-clip: text;
-                                -webkit-text-fill-color: transparent;
-                                animation: shine 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-                                animation-iteration-count: 1;
-                                animation-delay: 0.5s;
-                                display: inline-block;
-                            }
-
-                            @keyframes shine {
-                                0% {
-                                    background-position: 200% 0%;
-                                }
-                                100% {
-                                    background-position: -200% 0%;
-                                }
-                            }
-                        `}</style>
+                        Refined projects
+                        <br />
+                        with purpose
                     </motion.h2>
 
+                    {/* CTA Button & Annotations */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
+                        className="relative"
                     >
-                        <Link href='/work' className='group relative flex items-center gap-3 px-8 py-4 rounded-full bg-black text-white overflow-hidden transition-all duration-300 hover:pr-10'>
-                            <span className="relative z-10 font-medium">Explore More Projects</span>
-                            <ArrowUpRight size={20} className='relative z-10 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform' />
-                            <div className="absolute inset-0 bg-orange-500 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                        {/* Annotation 1: Let's get started */}
+                        <div className="absolute -right-[160px] top-4 pointer-events-none hidden md:block">
+                            <span
+                                className="block text-orange-400 text-xl -rotate-6 mb-2"
+                                style={{ fontFamily: 'var(--font-reenie)' }}
+                            >
+                                Let's get started
+                            </span>
+                            <svg width="60" height="40" viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-orange-300 transform -scale-x-100">
+                                <path d="M10,35 Q25,10 50,5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                                <path d="M42,5 L50,5 L48,12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </div>
+
+                        {/* Annotation 2: Where ideas take shape */}
+                        <div className="absolute -left-[180px] bottom-0 pointer-events-none hidden md:block">
+                            <svg width="60" height="40" viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-orange-300 ml-auto mb-1">
+                                <path d="M50,35 Q35,10 10,5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                                <path d="M18,5 L10,5 L12,12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                            <span
+                                className="block text-orange-400 text-xl rotate-3"
+                                style={{ fontFamily: 'var(--font-reenie)' }}
+                            >
+                                Where ideas take shape
+                            </span>
+                        </div>
+
+                        <Link
+                            href='/contact'
+                            className='group relative inline-flex items-center justify-center px-8 py-4 rounded-lg bg-orange-500 text-white shadow-lg shadow-orange-500/30 overflow-hidden transition-all duration-300 hover:shadow-orange-500/50 hover:-translate-y-1'
+                        >
+                            <span className="relative z-10 flex items-center gap-2 font-bold tracking-wider uppercase text-sm">
+                                Discuss your ideas
+                                <ArrowRight size={18} />
+                            </span>
+                            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                         </Link>
                     </motion.div>
                 </div>
