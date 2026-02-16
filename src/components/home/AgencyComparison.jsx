@@ -61,7 +61,7 @@ export default function AgencyComparison() {
                 </div>
 
                 {/* Footer / Social Proof */}
-                <div className="flex flex-col md:flex-row items-center justify-between gap-8 pt-8 border-t border-gray-200">
+                <div className="flex flex-col md:flex-row items-center gap-8 pt-8 border-t border-gray-200">
                     
                     {/* CTA Button */}
                     <div className="flex-shrink-0">
