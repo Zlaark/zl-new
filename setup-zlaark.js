@@ -1,1 +1,1 @@
-404: Not Found
+// File cleared due to invalid content

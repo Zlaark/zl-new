@@ -16,7 +16,7 @@ export default function Testimonials() {
               <div className="testimonial-rating">
                 {'★'.repeat(testimonial.rating)}
               </div>
-              <p className="testimonial-content">"{testimonial.content}"</p>
+              <p className="testimonial-content">&quot;{testimonial.content}&quot;</p>
               <div className="testimonial-author">
                 <div className="testimonial-avatar">
                   {testimonial.name.charAt(0)}

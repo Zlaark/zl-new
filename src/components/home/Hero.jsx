@@ -6,6 +6,27 @@ import { cn } from '@/lib/utils';
 import { ArrowRight } from 'lucide-react';
 import HeroBackground from './HeroBackground';
 
+const HeroButton = ({ children, href, variant = 'primary' }) => {
+        return (
+            <div className="relative">
+                <Link
+                    href={href}
+                    className={cn(
+                        'group relative flex items-center justify-center px-6 py-3 rounded-md font-bold text-sm tracking-widest uppercase transition-all duration-300 overflow-hidden',
+                        variant === 'primary'
+                            ? 'bg-orange-500 text-white shadow-lg shadow-orange-500/30'
+                            : 'bg-[#1a1c2e] text-white shadow-lg shadow-blue-900/20'
+                    )}
+                >
+                    <span className="relative z-10 flex items-center gap-2">
+                        {children}
+                        {variant === 'primary' && <ArrowRight size={18} />}
+                    </span>
+                </Link>
+            </div>
+        );
+    };
+
 export default function Hero() {
     const containerRef = useRef(null);
 
@@ -30,26 +51,7 @@ export default function Hero() {
         },
     };
 
-    const HeroButton = ({ children, href, variant = 'primary' }) => {
-        return (
-            <div className="relative">
-                <Link
-                    href={href}
-                    className={cn(
-                        'group relative flex items-center justify-center px-6 py-3 rounded-md font-bold text-sm tracking-widest uppercase transition-all duration-300 overflow-hidden',
-                        variant === 'primary'
-                            ? 'bg-orange-500 text-white shadow-lg shadow-orange-500/30'
-                            : 'bg-[#1a1c2e] text-white shadow-lg shadow-blue-900/20'
-                    )}
-                >
-                    <span className="relative z-10 flex items-center gap-2">
-                        {children}
-                        {variant === 'primary' && <ArrowRight size={18} />}
-                    </span>
-                </Link>
-            </div>
-        );
-    };
+
 
     return (
         <section ref={containerRef} className="relative min-h-[90vh] flex justify-center overflow-hidden bg-transparent pt-48 pb-20">

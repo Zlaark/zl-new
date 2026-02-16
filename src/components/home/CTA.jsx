@@ -78,7 +78,7 @@ export default function CTA() {
                         <span className='text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-orange-600 to-amber-500'>digital presence?</span>
                     </h2>
                     <p className='text-xl text-black/60 mb-12 max-w-2xl mx-auto leading-relaxed'>
-                        Let's build something extraordinary together. From concept to launch, we are your partners in digital innovation.
+                        Let&apos;s build something extraordinary together. From concept to launch, we are your partners in digital innovation.
                     </p>
 
                     <div className='flex justify-center'>
