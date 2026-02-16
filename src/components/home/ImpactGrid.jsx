@@ -4,17 +4,48 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight, Check, Star, Zap, BarChart, Settings, Users, Smile, Download, Monitor, Briefcase, User } from 'lucide-react';
 
+const fadeInUp = {
+    hidden: { opacity: 0, y: 30, filter: 'blur(10px)' },
+    visible: {
+        opacity: 1,
+        y: 0,
+        filter: 'blur(0px)',
+        transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+    }
+};
+
+const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1,
+            delayChildren: 0.2,
+        },
+    },
+};
+
 const Card = ({ children, className = "", noPadding = false }) => (
-    <div className={`bg-white rounded-3xl overflow-hidden ${noPadding ? '' : 'p-8'} ${className}`}>
+    <motion.div
+        variants={fadeInUp}
+        whileHover={{ y: -5, transition: { duration: 0.2 } }}
+        className={`bg-white rounded-3xl overflow-hidden ${noPadding ? '' : 'p-8'} ${className}`}
+    >
         {children}
-    </div>
+    </motion.div>
 );
 
 export default function ImpactGrid() {
     return (
         <section className="py-24 bg-gray-50 px-6">
             <div className="container mx-auto max-w-6xl">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr">
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={staggerContainer}
+                    className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr"
+                >
 
                     {/* Row 1 */}
                     {/* CSAT Card (1 cols) */}
@@ -57,10 +88,12 @@ export default function ImpactGrid() {
                             {/* Image Part */}
                             <div className="h-64 md:h-full w-full md:w-1/2 relative bg-gray-900 overflow-hidden">
                                 <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 to-purple-600 opacity-80 mix-blend-multiply" />
-                                <img
+                                <motion.img
                                     src="https://images.unsplash.com/photo-1614728853913-1e22baeb87f1?q=80&w=1000&auto=format&fit=crop"
                                     alt="Space"
                                     className="absolute inset-0 w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 transition-all duration-700"
+                                    animate={{ scale: [1, 1.15], rotate: [0, 2] }}
+                                    transition={{ duration: 20, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/50 to-transparent" />
                             </div>
@@ -89,7 +122,7 @@ export default function ImpactGrid() {
                         <div className="relative w-full md:w-1/3 min-h-[200px] md:min-h-full overflow-hidden flex items-end justify-center pb-0 md:pr-4">
                             {/* Decorative Cards Fan */}
                             <div className="absolute bottom-0 right-0 md:right-8 transform translate-y-1/4">
-                                <div className="relative w-48 h-48">
+                                <div className="relative w-48 h-48 group-hover:scale-105 transition-transform duration-500 delay-100">
                                     <div className="absolute inset-0 bg-white rounded-xl shadow-lg border-4 border-white transform -rotate-12 translate-x-[-40px] overflow-hidden">
                                         <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=60" className="w-full h-full object-cover" />
                                     </div>
@@ -136,7 +169,7 @@ export default function ImpactGrid() {
                             <h3 className="text-lg font-bold text-gray-900 mb-1">Agency website rebuild</h3>
                             <p className="text-gray-500 text-sm mb-4 font-medium">120% more inquiries</p>
                         </div>
-                        <div className="mt-4 flex-grow relative bg-gray-50 mx-6 mb-6 rounded-xl border border-gray-100 shadow-inner overflow-hidden flex items-center justify-center">
+                        <div className="mt-4 flex-grow relative bg-gray-50 mx-6 mb-6 rounded-xl border border-gray-100 shadow-inner overflow-hidden flex items-center justify-center group-hover:scale-[1.02] transition-transform duration-300">
                             {/* Abstract Visualization */}
                             <div className="relative w-3/4 h-3/4 bg-white rounded-lg shadow-sm border border-gray-100 p-3">
                                 <div className="flex gap-1.5 mb-3">
@@ -185,10 +218,12 @@ export default function ImpactGrid() {
                     {/* Profile Card (1 col) */}
                     <Card className="relative overflow-hidden group min-h-[300px] shadow-sm border border-gray-100" noPadding>
                         <div className="absolute inset-0 bg-orange-500" />
-                        <img
+                        <motion.img
                             src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop"
                             alt="Dennis Barrett"
-                            className="absolute inset-0 w-full h-full object-cover mix-blend-luminosity opacity-80 group-hover:opacity-100 group-hover:mix-blend-normal transition-all duration-500"
+                            className="absolute inset-0 w-full h-full object-cover mix-blend-luminosity opacity-80 group-hover:opacity-100 group-hover:mix-blend-normal"
+                            animate={{ scale: [1, 1.1] }}
+                            transition={{ duration: 10, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
 
@@ -201,7 +236,7 @@ export default function ImpactGrid() {
                         </div>
                     </Card>
 
-                </div>
+                </motion.div>
             </div>
         </section>
     );
