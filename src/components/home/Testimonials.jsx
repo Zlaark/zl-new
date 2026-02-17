@@ -1,35 +1,46 @@
 ﻿'use client';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Quote, Star, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { testimonials } from '@/data/content';
 import { cn } from '@/lib/utils';
 
-const TestimonialCard = ({ item, index }) => (
-    <div className="bg-white rounded-2xl p-8 shadow-xl shadow-slate-200/50 border border-slate-100 flex flex-col gap-6 items-start h-full relative overflow-hidden group hover:border-[#f46f17]/30 transition-colors">
-        <div className="relative flex-shrink-0">
-            <div className="w-20 h-20 rounded-2xl bg-slate-100 flex items-center justify-center text-2xl font-bold text-[#f46f17] overflow-hidden border border-slate-200 group-hover:bg-slate-50 transition-colors">
-                {item.name.charAt(0)}
-            </div>
-            <div className="absolute -bottom-2 -right-2 bg-[#f46f17] p-2 rounded-lg text-white shadow-lg">
-                <Quote size={14} />
-            </div>
-        </div>
-
-        <div className="flex-grow flex flex-col justify-between w-full">
+const TestimonialCard = ({ item }) => (
+    <div className="bg-slate-100/80 rounded-[2.5rem] p-4 h-full">
+        <div className="bg-white rounded-[2rem] p-8 md:p-10 h-full flex flex-col justify-between shadow-sm">
             <div>
-                <div className="flex gap-1 mb-4">
-                    {[...Array(item.rating)].map((_, i) => (
-                        <Star key={i} size={14} className="fill-[#f46f17] text-[#f46f17]" />
-                    ))}
-                </div>
-                <p className="text-base text-slate-700 font-medium leading-relaxed mb-6 italic">
-                    "{item.content}"
+                <p className="text-xl md:text-2xl text-slate-900 font-bold leading-[1.3] mb-8 tracking-tight">
+                    {item.content}
                 </p>
             </div>
-            <div className="mt-auto">
-                <h4 className="text-lg font-bold text-slate-900 group-hover:text-[#f46f17] transition-colors">{item.name}</h4>
-                <p className="text-slate-500 font-medium text-xs uppercase tracking-wider">{item.role}</p>
+            
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mt-auto">
+                <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-slate-200 overflow-hidden flex-shrink-0">
+                        {/* Placeholder for avatar as in reference */}
+                        <div className="w-full h-full flex items-center justify-center text-slate-400 bg-slate-100 font-bold text-sm">
+                            {item.name.charAt(0)}
+                        </div>
+                    </div>
+                    <div className="flex items-center gap-2 whitespace-nowrap">
+                        <span className="text-base font-bold text-slate-900">{item.name}</span>
+                        <span className="text-slate-300">—</span>
+                        <span className="text-sm font-semibold text-slate-400 uppercase tracking-wider">{item.role}</span>
+                    </div>
+                </div>
+                
+                <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                        <Star 
+                            key={i} 
+                            size={16} 
+                            className={cn(
+                                "fill-[#f46f17] text-[#f46f17]",
+                                i >= item.rating && "opacity-20"
+                            )} 
+                        />
+                    ))}
+                </div>
             </div>
         </div>
     </div>
@@ -95,44 +106,47 @@ export default function Testimonials() {
                                 className="absolute inset-0 grid grid-cols-1 lg:grid-cols-2 gap-8"
                             >
                                 <div className="h-full">
-                                    <TestimonialCard item={items[currentIndex]} index={currentIndex} />
+                                    <TestimonialCard item={items[currentIndex]} />
                                 </div>
                                 <div className="h-full hidden lg:block">
-                                    <TestimonialCard item={items[nextIndex]} index={nextIndex} />
+                                    <TestimonialCard item={items[nextIndex]} />
                                 </div>
                                 <div className="h-full lg:hidden">
-                                    <TestimonialCard item={items[nextIndex]} index={nextIndex} />
+                                    <TestimonialCard item={items[nextIndex]} />
                                 </div>
                             </motion.div>
                         </AnimatePresence>
                     </div>
 
-                    <div className="flex flex-col md:flex-row justify-center md:justify-between items-center gap-6 mt-12">
-                        <div className="flex gap-2 order-2 md:order-1">
-                            {items.map((_, i) => (
-                                <button
-                                    key={i}
-                                    onClick={() => { setIsAutoplay(false); setCurrentIndex(i); }}
-                                    className={cn(
-                                        "h-1.5 rounded-full transition-all duration-300",
-                                        currentIndex === i ? "w-8 bg-[#f46f17]" : "w-1.5 bg-slate-200"
-                                    )}
-                                />
-                            ))}
-                        </div>
+                    <div className="relative mt-20 flex justify-center items-center">
+                        <div className="absolute left-0 right-0 h-px bg-slate-200 z-0" />
                         
-                        <div className="flex items-center gap-4 order-1 md:order-2">
+                        <div className="relative z-10 bg-[#f8fafc] px-6 flex items-center gap-4">
                             <button
                                 onClick={handlePrev}
-                                className="p-3 rounded-xl bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 transition-all shadow-sm active:scale-95 hover:border-[#f46f17]/30"
+                                className="p-3 rounded-lg bg-white border border-slate-200 text-slate-400 hover:text-[#f46f17] hover:border-[#f46f17]/30 transition-all shadow-sm active:scale-95"
                             >
-                                <ChevronLeft size={20} />
+                                <ChevronLeft size={18} />
                             </button>
+                            
+                            <div className="flex gap-1.5 px-4 items-center">
+                                {items.map((_, i) => (
+                                    <button
+                                        key={i}
+                                        onClick={() => { setIsAutoplay(false); setCurrentIndex(i); }}
+                                        className={cn(
+                                            "h-1.5 rounded-full transition-all duration-300",
+                                            currentIndex === i ? "w-6 bg-[#f46f17]" : "w-1.5 bg-slate-200"
+                                        )}
+                                    />
+                                ))}
+                            </div>
+
                             <button
                                 onClick={handleNext}
-                                className="p-3 rounded-xl bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 transition-all shadow-sm active:scale-95 hover:border-[#f46f17]/30"
+                                className="p-3 rounded-lg bg-white border border-slate-200 text-slate-400 hover:text-[#f46f17] hover:border-[#f46f17]/30 transition-all shadow-sm active:scale-95"
                             >
-                                <ChevronRight size={20} />
+                                <ChevronRight size={18} />
                             </button>
                         </div>
                     </div>
