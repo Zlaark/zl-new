@@ -34,7 +34,7 @@ export default function HeroCard() {
     >
       <div 
          style={{ transform: 'translateZ(75px)' }} 
-         className='absolute inset-2 bg-gradient-to-br from-white/10 to-transparent backdrop-blur-2xl border border-white/10 rounded-[32px] shadow-2xl overflow-hidden flex flex-col justify-between p-8'
+         className='absolute inset-2 bg-gradient-to-br from-white/10 to-transparent backdrop-blur-2xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col justify-between p-8'
       >
           {/* Header */}
           <div className='flex justify-between items-start z-10'>
@@ -49,7 +49,7 @@ export default function HeroCard() {
           {/* Floating Elements */}
           <motion.div 
              style={{ transform: 'translateZ(30px)' }}
-             className='absolute top-1/3 right-[-10px] p-4 bg-surface-100/80 backdrop-blur-md rounded-2xl border border-white/5 flex items-center gap-3 w-48 shadow-xl'
+             className='absolute top-1/3 right-[-10px] p-4 bg-surface-100/80 backdrop-blur-md rounded-xl border border-white/5 flex items-center gap-3 w-48 shadow-xl'
           >
              <div className='bg-green-500/20 p-2 rounded-lg text-green-500'>
                  <TrendingUp size={20} />
@@ -62,7 +62,7 @@ export default function HeroCard() {
 
           <motion.div 
              style={{ transform: 'translateZ(50px)' }}
-             className='absolute bottom-1/4 left-[-10px] p-4 bg-background/90 backdrop-blur-md rounded-2xl border border-white/10 flex items-center gap-3 w-40 z-20 shadow-xl'
+             className='absolute bottom-1/4 left-[-10px] p-4 bg-background/90 backdrop-blur-md rounded-xl border border-white/10 flex items-center gap-3 w-40 z-20 shadow-xl'
           >
              <div className='bg-blue-500/20 p-2 rounded-lg text-blue-500'>
                  <ShieldCheck size={20} />

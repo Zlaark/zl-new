@@ -128,7 +128,7 @@ export default function ProjectSlider() {
                                 transition={{ x: { type: "spring", stiffness: 300, damping: 30 }, opacity: { duration: 0.3 } }}
                                 className="w-full absolute inset-0"
                             >
-                                <div className="bg-white rounded-[2rem] overflow-hidden shadow-2xl border border-gray-100 flex flex-col md:flex-row h-full">
+                                <div className="bg-white rounded-2xl overflow-hidden shadow-2xl border border-gray-100 flex flex-col md:flex-row h-full">
                                     <div className="w-full md:w-5/12 p-8 md:p-12 flex flex-col justify-center bg-white order-2 md:order-1">
                                         <h3 className="text-3xl font-bold text-slate-900 mb-6">{projects[currentIndex].title}</h3>
                                         <div className="space-y-4 mb-8">

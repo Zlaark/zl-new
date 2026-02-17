@@ -30,7 +30,7 @@ const Card = ({ children, className = "", noPadding = false }) => (
     <motion.div
         variants={fadeInUp}
         whileHover={{ y: -5, transition: { duration: 0.2 } }}
-        className={`bg-white rounded-3xl overflow-hidden ${noPadding ? '' : 'p-8'} ${className}`}
+        className={`bg-white rounded-2xl overflow-hidden ${noPadding ? '' : 'p-8'} ${className}`}
     >
         {children}
     </motion.div>

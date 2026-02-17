@@ -89,7 +89,7 @@ function ProjectCard({ project, index }) {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             className={cn(
-                'group relative rounded-[2.5rem] overflow-hidden cursor-pointer bg-white h-[400px] min-w-[300px] md:min-w-[400px] transition-shadow duration-500',
+                'group relative rounded-2xl overflow-hidden cursor-pointer bg-white h-[400px] min-w-[300px] md:min-w-[400px] transition-shadow duration-500',
                 isHovered ? 'shadow-[0_20px_50px_rgba(0,0,0,0.15)]' : 'shadow-lg'
             )}
         >
@@ -155,7 +155,7 @@ function ProjectCard({ project, index }) {
             {/* Hover Glow Border */}
             <motion.div
                 animate={{ opacity: isHovered ? 1 : 0 }}
-                className="absolute inset-0 rounded-[2.5rem] border-2 border-white/30 pointer-events-none z-30"
+                className="absolute inset-0 rounded-2xl border-2 border-white/30 pointer-events-none z-30"
             />
         </motion.div>
     );

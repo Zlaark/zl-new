@@ -1,6 +1,6 @@
-﻿'use client';
+'use client';
 import { motion } from 'framer-motion';
-import { Check, Rocket, Flame } from 'lucide-react';
+import { Check, Rocket, Flame, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 const pricingPlans = [
@@ -44,7 +44,7 @@ export default function Pricing() {
         <section className="py-16 bg-white relative overflow-hidden text-slate-900 font-sans">
             <div className="container mx-auto px-4 relative z-10">
                 <div className="text-center mb-10">
-                    <motion.span 
+                    <motion.span
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -52,7 +52,7 @@ export default function Pricing() {
                     >
                         &gt; PRICING &lt;
                     </motion.span>
-                    <motion.h2 
+                    <motion.h2
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -63,7 +63,7 @@ export default function Pricing() {
                     </motion.h2>
                 </div>
 
-                <div className="max-w-4xl mx-auto bg-[#f3f4f6] rounded-[2rem] p-3 md:p-6 border border-slate-200/50">
+                <div className="max-w-4xl mx-auto bg-[#f3f4f6] rounded-2xl p-3 md:p-6 border border-slate-200/50">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {pricingPlans.map((plan, index) => (
                             <motion.div
@@ -72,14 +72,14 @@ export default function Pricing() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                                className={`relative rounded-3xl overflow-hidden flex flex-col h-full shadow-sm
-                                    ${plan.highlight 
-                                        ? 'bg-[#f46f17] text-white' 
+                                className={`relative rounded-xl overflow-hidden flex flex-col h-full shadow-sm
+                                    ${plan.highlight
+                                        ? 'bg-[#f46f17] text-white'
                                         : 'bg-white text-slate-900 border border-slate-100/50'
                                     }`}
                             >
                                 {/* Card Header - Consistent light area for both cards */}
-                                <div className={`p-6 md:p-8 m-2 rounded-2xl ${plan.highlight ? 'bg-white' : 'bg-[#f3f4f6]/60'}`}>
+                                <div className={`p-6 md:p-8 m-2 rounded-lg ${plan.highlight ? 'bg-white' : 'bg-[#f3f4f6]/60'}`}>
                                     <div className="flex justify-between items-start mb-4">
                                         <span className={`text-[9px] font-bold tracking-[0.2em] uppercase text-slate-400`}>
                                             {plan.name}
@@ -121,9 +121,9 @@ export default function Pricing() {
 
                                     <div className="mt-auto">
                                         <Link href={plan.buttonLink} className="block transition-transform active:scale-[0.98]">
-                                            <div className={`w-full py-2.5 rounded-xl text-sm font-bold text-center transition-all duration-300
-                                                ${plan.highlight 
-                                                    ? 'bg-slate-900 text-white hover:bg-black shadow-lg shadow-black/10' 
+                                            <div className={`w-full py-2.5 rounded-lg text-sm font-bold text-center transition-all duration-300
+                                                ${plan.highlight
+                                                    ? 'bg-slate-900 text-white hover:bg-black shadow-lg shadow-black/10'
                                                     : 'bg-[#f46f17] text-white hover:bg-[#e05d0e] shadow-md shadow-orange-100'
                                                 }`}>
                                                 {plan.buttonText}
@@ -142,8 +142,13 @@ export default function Pricing() {
                 </div>
 
                 <div className="mt-12 text-center max-w-xl mx-auto px-4">
-                    <p className="text-slate-400 font-semibold text-xs md:text-sm leading-snug">
-                        For agencies and enterprises needing custom strategy and execution.
+                    <p className="text-slate-400 font-semibold text-xs md:text-sm leading-relaxed">
+                        For agencies and enterprises needing<br />
+                        custom strategy and execution.<br />
+                        <Link href="/contact" className="text-[#f46f17] hover:text-[#e05d0e] inline-flex items-center gap-1 font-bold mt-2 group transition-colors">
+                            Contact us
+                            <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+                        </Link>
                     </p>
                 </div>
             </div>

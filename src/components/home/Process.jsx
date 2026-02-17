@@ -151,7 +151,7 @@ export default function Process() {
                                                 hover: { rotate: -4, scale: 1, opacity: 1, x: -12, y: -12 }
                                             }}
                                             transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                                            className="absolute -top-6 -left-6 right-6 bottom-6 bg-gradient-to-br from-orange-500 via-orange-400 to-orange-600 rounded-2xl border border-orange-600/50 shadow-lg z-0"
+                                            className="absolute -top-6 -left-6 right-6 bottom-6 bg-gradient-to-br from-orange-500 via-orange-400 to-orange-600 rounded-xl border border-orange-600/50 shadow-lg z-0"
                                         />
                                         {/* Background Card 2 (Top Right) */}
                                         <motion.div
@@ -160,7 +160,7 @@ export default function Process() {
                                                 hover: { rotate: 3, scale: 1, opacity: 1, x: 8, y: -8 }
                                             }}
                                             transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                                            className="absolute -top-4 -right-4 left-4 bottom-4 bg-gradient-to-br from-orange-600 via-orange-500 to-orange-700 rounded-2xl border border-orange-700/50 shadow-md z-1"
+                                            className="absolute -top-4 -right-4 left-4 bottom-4 bg-gradient-to-br from-orange-600 via-orange-500 to-orange-700 rounded-xl border border-orange-700/50 shadow-md z-1"
                                         />
                                         {/* Background Card 3 (Bottom) */}
                                         <motion.div
@@ -169,12 +169,12 @@ export default function Process() {
                                                 hover: { rotate: 2, scale: 1, opacity: 1, x: 6, y: 6 }
                                             }}
                                             transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                                            className="absolute -bottom-3 -right-3 left-3 top-3 bg-gradient-to-br from-orange-400 via-orange-300 to-orange-500 rounded-2xl border border-orange-500/50 shadow z-2"
+                                            className="absolute -bottom-3 -right-3 left-3 top-3 bg-gradient-to-br from-orange-400 via-orange-300 to-orange-500 rounded-xl border border-orange-500/50 shadow z-2"
                                         />
 
                                         {/* Main Card (Front) */}
                                         <div className={cn(
-                                            'relative z-10 backdrop-blur-sm text-left p-8 rounded-2xl bg-gradient-to-br from-white to-white/50 border border-orange-500/20 shadow-sm hover:shadow-md hover:border-orange-500/40 transition-all duration-300',
+                                            'relative z-10 backdrop-blur-sm text-left p-8 rounded-xl bg-gradient-to-br from-white to-white/50 border border-orange-500/20 shadow-sm hover:shadow-md hover:border-orange-500/40 transition-all duration-300',
                                             index % 2 === 0 ? 'md:text-left' : 'md:text-right'
                                         )}>
                                             <div className='flex items-center gap-4 mb-4 md:hidden'>

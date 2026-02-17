@@ -69,7 +69,7 @@ function ServiceCard({ service, index }) {
             onMouseLeave={handleMouseLeave}
             style={{ rotateX, rotateY, perspective: 1000 }}
             className={cn(
-                'group relative p-8 rounded-[2rem] bg-white border border-black/5 overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-black/5',
+                'group relative p-8 rounded-2xl bg-white border border-black/5 overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-black/5',
                 service.className
             )}
         >
@@ -82,7 +82,7 @@ function ServiceCard({ service, index }) {
                 <div className='flex justify-between items-start mb-12'>
                     <motion.div
                         whileHover={{ scale: 1.1, rotate: 5 }}
-                        className='p-4 rounded-2xl bg-slate-50 border border-black/5 text-black transition-colors group-hover:bg-white group-hover:border-black/10'
+                        className='p-4 rounded-xl bg-slate-50 border border-black/5 text-black transition-colors group-hover:bg-white group-hover:border-black/10'
                     >
                         <service.icon size={32} strokeWidth={1.5} />
                     </motion.div>
