@@ -1,6 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
-import { Check, Rocket, Flame, ArrowRight } from 'lucide-react';
+import { Check, Rocket, Flame, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 
 const pricingPlans = [
@@ -142,14 +142,14 @@ export default function Pricing() {
                 </div>
 
                 <div className="mt-12 text-center max-w-xl mx-auto px-4">
-                    <p className="text-slate-400 font-semibold text-xs md:text-sm leading-relaxed">
+                    <p className="text-slate-500/80 font-semibold text-xs md:text-sm leading-relaxed">
                         For agencies and enterprises needing<br />
-                        custom strategy and execution.<br />
-                        <Link href="/contact" className="text-[#f46f17] hover:text-[#e05d0e] inline-flex items-center gap-1 font-bold mt-2 group transition-colors">
-                            Contact us
-                            <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
-                        </Link>
+                        custom strategy and execution.
                     </p>
+                    <Link href="/contact" className="text-[#f46f17] hover:text-[#e05d0e] inline-flex items-center gap-1 font-bold mt-2 group transition-colors text-sm md:text-base">
+                        Contact us
+                        <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" strokeWidth={3} />
+                    </Link>
                 </div>
             </div>
 

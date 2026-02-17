@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 import Header from '@/components/Header';
 import Hero from '@/components/home/Hero';
 import Services from '@/components/home/Services';
@@ -12,6 +12,7 @@ import ImpactGrid from '@/components/home/ImpactGrid';
 import ServicesScroll from '@/components/home/ServicesScroll';
 import ProjectSlider from '@/components/home/ProjectSlider';
 import Pricing from '@/components/home/Pricing';
+import Testimonials from '@/components/home/Testimonials';
 import CTA from '@/components/home/CTA';
 import Footer from '@/components/Footer';
 import BackToTop from '@/components/BackToTop';
@@ -30,6 +31,7 @@ export default function Home() {
                 <ServicesScroll />
                 <ProjectSlider />
                 <Pricing />
+                <Testimonials />
                 <Process />
                 <Portfolio />
                 <CTA />
@@ -39,4 +41,3 @@ export default function Home() {
         </>
     );
 }
-
