@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
@@ -117,33 +117,31 @@ export default function Testimonials() {
                         </AnimatePresence>
                     </div>
 
-                    <div className="relative mt-20 flex justify-center items-center max-w-6xl mx-auto">
+                    <div className="relative mt-12 flex justify-center items-center max-w-6xl mx-auto">
                         <div className="absolute left-0 right-0 h-px bg-slate-200 z-0" />
                         
-                        <div className="relative z-10 bg-[#f8fafc] px-6 flex items-center gap-4">
+                        <div className="relative z-10 bg-[#f8fafc] px-6 flex items-center gap-6">
                             <button
                                 onClick={handlePrev}
-                                className="p-3 rounded-lg bg-white border border-slate-200 text-slate-400 hover:text-[#f46f17] hover:border-[#f46f17]/30 transition-all shadow-sm active:scale-95"
+                                className="p-3 rounded-lg bg-white border border-slate-200 text-slate-400 hover:text-[#f46f17] hover:border-[#f46f17]/30 transition-all shadow-sm active:scale-95 flex-shrink-0"
                             >
                                 <ChevronLeft size={18} />
                             </button>
                             
-                            <div className="flex gap-1.5 px-4 items-center">
-                                {items.map((_, i) => (
-                                    <button
-                                        key={i}
-                                        onClick={() => { setIsAutoplay(false); setCurrentIndex(i); }}
-                                        className={cn(
-                                            "h-1.5 rounded-full transition-all duration-300",
-                                            currentIndex === i ? "w-6 bg-[#f46f17]" : "w-1.5 bg-slate-200"
-                                        )}
+                            <div className="flex gap-1.5 px-2 items-center flex-1 w-[200px] md:w-[300px]">
+                                <div className="h-1.5 w-full bg-slate-200 rounded-full overflow-hidden relative">
+                                    <motion.div 
+                                        className="absolute top-0 left-0 h-full bg-[#f46f17] rounded-full"
+                                        initial={{ width: 0 }}
+                                        animate={{ width: `${((currentIndex + 1) / items.length) * 100}%` }}
+                                        transition={{ duration: 0.5, ease: "easeOut" }}
                                     />
-                                ))}
+                                </div>
                             </div>
 
                             <button
                                 onClick={handleNext}
-                                className="p-3 rounded-lg bg-white border border-slate-200 text-slate-400 hover:text-[#f46f17] hover:border-[#f46f17]/30 transition-all shadow-sm active:scale-95"
+                                className="p-3 rounded-lg bg-white border border-slate-200 text-slate-400 hover:text-[#f46f17] hover:border-[#f46f17]/30 transition-all shadow-sm active:scale-95 flex-shrink-0"
                             >
                                 <ChevronRight size={18} />
                             </button>
