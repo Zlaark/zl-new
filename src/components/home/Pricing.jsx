@@ -44,10 +44,19 @@ export default function Pricing() {
         <section className="py-20 bg-white relative overflow-hidden text-slate-900 font-sans">
             <div className="container mx-auto px-4 relative z-10">
                 <div className="text-center mb-12">
+                    <motion.span 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-slate-400 font-bold tracking-[0.3em] text-[10px] md:text-xs uppercase mb-4 block"
+                    >
+                        &gt; PRICING &lt;
+                    </motion.span>
                     <motion.h2 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
+                        transition={{ delay: 0.1 }}
                         className="text-4xl md:text-6xl font-bold text-slate-900 tracking-tight"
                     >
                         Plan that fits
@@ -145,3 +154,4 @@ export default function Pricing() {
         </section>
     );
 }
+
