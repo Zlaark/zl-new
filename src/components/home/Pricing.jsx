@@ -78,10 +78,10 @@ export default function Pricing() {
                                         : 'bg-white text-slate-900 border border-slate-100/50'
                                     }`}
                             >
-                                {/* Card Header */}
-                                <div className={`p-6 md:p-8 ${plan.highlight ? 'bg-black/5' : 'bg-[#f3f4f6]/40'}`}>
+                                {/* Card Header - Consistent light area for both cards */}
+                                <div className={`p-6 md:p-8 m-2 rounded-2xl ${plan.highlight ? 'bg-white' : 'bg-[#f3f4f6]/60'}`}>
                                     <div className="flex justify-between items-start mb-4">
-                                        <span className={`text-[9px] font-bold tracking-[0.2em] uppercase ${plan.highlight ? 'text-white/80' : 'text-slate-400'}`}>
+                                        <span className={`text-[9px] font-bold tracking-[0.2em] uppercase text-slate-400`}>
                                             {plan.name}
                                         </span>
                                         {plan.badge && (
@@ -91,18 +91,18 @@ export default function Pricing() {
                                         )}
                                     </div>
                                     <div className="flex items-baseline gap-1 mb-3">
-                                        <span className={`text-3xl md:text-4xl font-bold tracking-tighter ${plan.highlight ? 'text-white' : 'text-slate-900'}`}>
+                                        <span className={`text-3xl md:text-4xl font-bold tracking-tighter text-slate-900`}>
                                             ${plan.price}
                                         </span>
-                                        <span className={`text-xs font-semibold ${plan.highlight ? 'text-white/70' : 'text-slate-400'}`}>/ project</span>
+                                        <span className={`text-xs font-semibold text-slate-400`}>/ project</span>
                                     </div>
-                                    <p className={`text-xs md:text-sm leading-relaxed font-semibold ${plan.highlight ? 'text-white/90' : 'text-slate-500'}`}>
+                                    <p className={`text-xs md:text-sm leading-relaxed font-semibold text-slate-500`}>
                                         {plan.description}
                                     </p>
                                 </div>
 
                                 {/* Divider */}
-                                <div className={`h-px w-full ${plan.highlight ? 'border-t border-dashed border-white/20' : 'border-t border-dashed border-slate-200'}`} />
+                                <div className={`h-px w-full ${plan.highlight ? 'border-t border-dashed border-white/20' : 'border-t border-dashed border-slate-100'}`} />
 
                                 {/* Card Body */}
                                 <div className="p-6 md:p-8 flex-grow relative flex flex-col">
@@ -121,9 +121,9 @@ export default function Pricing() {
 
                                     <div className="mt-auto">
                                         <Link href={plan.buttonLink} className="block transition-transform active:scale-[0.98]">
-                                            <div className={`w-full py-2.5 rounded-lg text-sm font-bold text-center transition-all duration-300
+                                            <div className={`w-full py-2.5 rounded-xl text-sm font-bold text-center transition-all duration-300
                                                 ${plan.highlight 
-                                                    ? 'bg-slate-900 text-white hover:bg-black shadow-md' 
+                                                    ? 'bg-slate-900 text-white hover:bg-black shadow-lg shadow-black/10' 
                                                     : 'bg-[#f46f17] text-white hover:bg-[#e05d0e] shadow-md shadow-orange-100'
                                                 }`}>
                                                 {plan.buttonText}
