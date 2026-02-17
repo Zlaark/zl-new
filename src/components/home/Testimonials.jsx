@@ -6,26 +6,25 @@ import { testimonials } from '@/data/content';
 import { cn } from '@/lib/utils';
 
 const TestimonialCard = ({ item }) => (
-    <div className="bg-slate-100/80 rounded-[2.5rem] p-4 h-full">
-        <div className="bg-white rounded-[2rem] p-8 md:p-10 h-full flex flex-col justify-between shadow-sm">
+    <div className="bg-slate-200/90 rounded-3xl p-5 h-full transition-colors group-hover:bg-slate-300/50">
+        <div className="bg-white rounded-2xl pl-8 md:pl-10 pr-10 md:pr-14 py-8 md:py-10 h-full flex flex-col justify-between shadow-sm border border-slate-100/50">
             <div>
-                <p className="text-xl md:text-2xl text-slate-900 font-bold leading-[1.3] mb-8 tracking-tight">
+                <p className="text-lg md:text-xl text-slate-800 font-medium leading-[1.5] mb-6 md:mb-8 tracking-tight">
                     {item.content}
                 </p>
             </div>
             
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mt-auto">
                 <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-slate-200 overflow-hidden flex-shrink-0">
-                        {/* Placeholder for avatar as in reference */}
-                        <div className="w-full h-full flex items-center justify-center text-slate-400 bg-slate-100 font-bold text-sm">
+                    <div className="w-10 h-10 rounded-full bg-slate-200 overflow-hidden flex-shrink-0">
+                        <div className="w-full h-full flex items-center justify-center text-slate-400 bg-slate-100 font-bold text-xs">
                             {item.name.charAt(0)}
                         </div>
                     </div>
                     <div className="flex items-center gap-2 whitespace-nowrap">
-                        <span className="text-base font-bold text-slate-900">{item.name}</span>
+                        <span className="text-sm font-semibold text-slate-900">{item.name}</span>
                         <span className="text-slate-300">—</span>
-                        <span className="text-sm font-semibold text-slate-400 uppercase tracking-wider">{item.role}</span>
+                        <span className="text-[10px] font-medium text-slate-400 uppercase tracking-widest">{item.role}</span>
                     </div>
                 </div>
                 
@@ -33,7 +32,7 @@ const TestimonialCard = ({ item }) => (
                     {[...Array(5)].map((_, i) => (
                         <Star 
                             key={i} 
-                            size={16} 
+                            size={14} 
                             className={cn(
                                 "fill-[#f46f17] text-[#f46f17]",
                                 i >= item.rating && "opacity-20"
@@ -73,7 +72,7 @@ export default function Testimonials() {
 
     return (
         <section className="py-24 bg-[#f8fafc] relative overflow-hidden font-sans">
-            <div className="container mx-auto px-4 relative z-10">
+            <div className="container mx-auto px-4 relative z-10 w-full">
                 <div className="text-center mb-16">
                     <motion.span
                         initial={{ opacity: 0, y: 10 }}
@@ -94,8 +93,8 @@ export default function Testimonials() {
                     </motion.h2>
                 </div>
 
-                <div className="max-w-6xl mx-auto relative">
-                    <div className="relative h-[950px] lg:h-[450px]">
+                <div className="max-w-[1400px] mx-auto relative lg:px-4">
+                    <div className="relative h-[950px] lg:h-[480px]">
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={currentIndex}
@@ -105,20 +104,20 @@ export default function Testimonials() {
                                 transition={{ duration: 0.6, ease: "easeInOut" }}
                                 className="absolute inset-0 grid grid-cols-1 lg:grid-cols-2 gap-8"
                             >
-                                <div className="h-full">
+                                <div className="h-full group">
                                     <TestimonialCard item={items[currentIndex]} />
                                 </div>
-                                <div className="h-full hidden lg:block">
+                                <div className="h-full hidden lg:block group">
                                     <TestimonialCard item={items[nextIndex]} />
                                 </div>
-                                <div className="h-full lg:hidden">
+                                <div className="h-full lg:hidden group">
                                     <TestimonialCard item={items[nextIndex]} />
                                 </div>
                             </motion.div>
                         </AnimatePresence>
                     </div>
 
-                    <div className="relative mt-20 flex justify-center items-center">
+                    <div className="relative mt-20 flex justify-center items-center max-w-6xl mx-auto">
                         <div className="absolute left-0 right-0 h-px bg-slate-200 z-0" />
                         
                         <div className="relative z-10 bg-[#f8fafc] px-6 flex items-center gap-4">
