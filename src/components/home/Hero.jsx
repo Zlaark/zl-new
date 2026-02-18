@@ -62,19 +62,19 @@ export default function Hero() {
     };
 
     return (
-        <section ref={containerRef} className="relative min-h-[90vh] flex justify-center overflow-hidden bg-transparent pt-48 pb-20">
+        <section ref={containerRef} className="relative min-h-[90vh] flex justify-center overflow-hidden bg-transparent pt-32 pb-20">
             {/* Animated Background */}
             <HeroBackground />
 
             <motion.div
                 className='container relative z-10 px-6 mx-auto'
             >
-                <div className='flex flex-col items-start text-left'>
+                <div className='flex flex-col items-center text-center'>
                     <motion.div
                         initial='hidden'
                         animate='visible'
                         variants={staggerContainer}
-                        className='flex flex-col items-start max-w-5xl'
+                        className='flex flex-col items-center max-w-5xl mx-auto'
                     >
                         {/* Badge */}
                         <motion.div variants={fadeInUp} className='mb-8'>
@@ -88,10 +88,10 @@ export default function Hero() {
                         {/* Headline */}
                         <motion.h1
                             variants={fadeInUp}
-                            className='text-5xl md:text-7xl lg:text-[85px] font-bold tracking-[-0.02em] text-[#060612] mb-8 leading-[1.05] flex flex-col items-start w-full'
+                            className='text-4xl md:text-6xl lg:text-[72px] font-medium tracking-[-0.02em] text-[#060612] mb-10 leading-[1.1] flex flex-col items-center'
                         >
                             <span className="block">We design brands</span>
-                            <span className="flex items-center justify-start gap-x-4">
+                            <span className="flex items-center justify-center gap-x-4">
                                 <span>that move</span>
                                 <span className='text-[#FF6321]'>people</span>
                             </span>
