@@ -88,11 +88,11 @@ export default function Hero() {
                         {/* Headline */}
                         <motion.h1
                             variants={fadeInUp}
-                            className='text-3xl md:text-5xl lg:text-7xl font-bold tracking-tight text-slate-900 mb-6 leading-[0.9] flex flex-col items-center'
+                            className='text-3xl md:text-5xl lg:text-7xl font-bold tracking-tight  mb-6 leading-[0.9] flex flex-col items-center'
                         >
-                            <span className="block">We Craft</span>
-                            <span className='text-orange-500 italic font-medium'>
-                                Digital Legacies
+                            <span className="block text-[#060612]">We Craft Digital</span>
+                            <span className='text-[#FF6321] font-medium'>
+                                Legacies
                             </span>
                         </motion.h1>
 

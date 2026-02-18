@@ -16,8 +16,8 @@ export const navigation = [
 ];
 
 export const hero = {
-    headline: 'We Craft',
-    headlineAccent: 'Digital Legacies',
+    headline: 'We Craft Digital',
+    headlineAccent: 'Legacies',
     subheadline: '',
     description: 'Transform your vision into reality with stunning websites and powerful applications. We combine creativity with cutting-edge technology.',
     primaryCTA: { text: 'Start Your Project', href: '/contact' },

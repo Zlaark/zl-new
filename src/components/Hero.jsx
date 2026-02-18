@@ -48,13 +48,13 @@ export default function Hero() {
                     {/* Headline - Refined V3 (Medium Weight - "Thinner") */}
                     <div className="flex flex-col items-center leading-[0.95]">
                         {/* Line 1 */}
-                        <h1 className="text-5xl md:text-7xl lg:text-[6.5rem] xl:text-[7.5rem] font-medium text-stone-900 tracking-tight -mb-2 md:-mb-3 lg:-mb-4">
+                        <h1 className="text-5xl md:text-7xl lg:text-[6.5rem] xl:text-[7.5rem] font-medium text-[#060612] tracking-tight -mb-2 md:-mb-3 lg:-mb-4">
                             <TextReveal>{hero.headline}</TextReveal>
                         </h1>
 
                         {/* Line 2 */}
                         <h1 className="text-5xl md:text-7xl lg:text-[6.5rem] xl:text-[7.5rem] font-medium tracking-tight pb-4">
-                            <span className="bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent">
+                            <span className="text-[#FF6321]">
                                 <TextReveal delay={0.4}>{hero.headlineAccent}</TextReveal>
                             </span>
                         </h1>
