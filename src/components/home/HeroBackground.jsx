@@ -77,7 +77,7 @@ export default function HeroBackground() {
     const opacity = useTransform(scrollY, [0, 300], [1, 0.5]);
 
     return (
-        <div className='absolute inset-0 z-0 pointer-events-none overflow-hidden bg-white'>
+        <div className='absolute inset-0 z-0 pointer-events-none overflow-hidden bg-[#F5F4F3]'>
             <div className="absolute inset-0 z-0 opacity-40">
                 <Canvas camera={{ position: [0, 0, 15] }}>
                     <ParticleSystem />
@@ -94,7 +94,7 @@ export default function HeroBackground() {
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
             </motion.div>
 
-            <div className='absolute inset-0 bg-gradient-to-b from-transparent via-white/60 to-white pointer-events-none z-10' />
+            <div className='absolute inset-0 bg-gradient-to-b from-transparent via-[#F5F4F3]/60 to-[#F5F4F3] pointer-events-none z-10' />
         </div>
     );
 }

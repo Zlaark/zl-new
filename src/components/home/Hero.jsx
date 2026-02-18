@@ -7,25 +7,35 @@ import { ArrowRight } from 'lucide-react';
 import HeroBackground from './HeroBackground';
 
 const HeroButton = ({ children, href, variant = 'primary' }) => {
-        return (
-            <div className="relative">
-                <Link
-                    href={href}
-                    className={cn(
-                        'group relative flex items-center justify-center px-6 py-3 rounded-md font-bold text-sm tracking-widest uppercase transition-all duration-300 overflow-hidden',
-                        variant === 'primary'
-                            ? 'bg-orange-500 text-white shadow-lg shadow-orange-500/30'
-                            : 'bg-[#1a1c2e] text-white shadow-lg shadow-blue-900/20'
-                    )}
-                >
-                    <span className="relative z-10 flex items-center gap-2">
-                        {children}
-                        {variant === 'primary' && <ArrowRight size={18} />}
-                    </span>
-                </Link>
-            </div>
-        );
-    };
+    return (
+        <div className="relative">
+            <Link
+                href={href}
+                className={cn(
+                    'group relative flex items-center justify-center px-6 py-3 rounded-md font-bold text-sm tracking-widest uppercase transition-all duration-300 overflow-hidden',
+                    variant === 'primary'
+                        ? 'bg-orange-500 text-white shadow-lg shadow-orange-500/30'
+                        : 'bg-[#1a1c2e] text-white shadow-lg shadow-blue-900/20'
+                )}
+            >
+                <span className="relative z-10 flex items-center gap-2">
+                    {children}
+                    {variant === 'primary' && <ArrowRight size={18} />}
+                </span>
+            </Link>
+        </div>
+    );
+};
+
+const PixelArrow = ({ direction = 'right' }) => (
+    <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-slate-400">
+        {direction === 'right' ? (
+            <path d="M0 0H2V2H0V0ZM2 2H4V4H2V2ZM4 4H6V6H4V4ZM2 6H4V8H2V6ZM0 8H2V10H0V8Z" fill="currentColor" />
+        ) : (
+            <path d="M6 0H4V2H6V0ZM4 2H2V4H4V2ZM2 4H0V6H2V4ZM4 6H2V8H4V6ZM6 8H4V10H6V8Z" fill="currentColor" />
+        )}
+    </svg>
+);
 
 export default function Hero() {
     const containerRef = useRef(null);
@@ -51,8 +61,6 @@ export default function Hero() {
         },
     };
 
-
-
     return (
         <section ref={containerRef} className="relative min-h-[90vh] flex justify-center overflow-hidden bg-transparent pt-48 pb-20">
             {/* Animated Background */}
@@ -70,8 +78,10 @@ export default function Hero() {
                     >
                         {/* Badge */}
                         <motion.div variants={fadeInUp} className='mb-8'>
-                            <span className='inline-flex items-center gap-2 py-2 px-6 rounded-full border border-orange-100 bg-white text-xs font-bold tracking-[0.2em] uppercase text-slate-900 shadow-sm'>
-                                <span className='text-orange-500'>&gt;</span> DIGITAL AGENCY <span className='text-orange-500'>&lt;</span>
+                            <span className='inline-flex items-center gap-4 py-2 px-5 rounded-md border border-[#e5e5e5] bg-[#f4f4f4]/80 text-[11px] font-bold tracking-[0.25em] uppercase text-slate-600 shadow-sm backdrop-blur-sm'>
+                                <PixelArrow direction="right" />
+                                DIGITAL AGENCY
+                                <PixelArrow direction="left" />
                             </span>
                         </motion.div>
 
