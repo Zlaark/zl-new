@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 export default function AgencySelection() {
     return (
-        <section className="py-20 md:py-28 bg-[#f5f5f0]">
+        <section className="py-20 md:py-28 bg-[#F5F4F3]">
             <div className="container mx-auto px-6 md:px-10">
                 <div className="max-w-[780px] mx-auto text-left">
                     <motion.div

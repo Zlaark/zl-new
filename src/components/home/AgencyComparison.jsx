@@ -22,7 +22,7 @@ const zlaarkBenefits = [
 
 export default function AgencyComparison() {
     return (
-        <section className="pb-24 bg-gray-50 px-6">
+        <section className="pb-24 bg-[#F5F4F3] px-6">
             <div className="container mx-auto max-w-4xl">
                 
                 {/* Comparison Grid */}
@@ -45,7 +45,7 @@ export default function AgencyComparison() {
                     </div>
 
                     {/* Right Card - Zlaark (Orange) */}
-                    <div className="p-8 rounded-2xl bg-orange-400 shadow-xl shadow-orange-500/20 transform md:scale-105 relative z-10 text-gray-900 border-2 border-orange-500">
+                    <div className="p-8 rounded-2xl bg-[#FEA75D] shadow-xl shadow-[#FEA75D]/20 transform md:scale-105 relative z-10 text-gray-900 border-2 border-[#FEA75D]">
                         <h3 className="text-xl font-bold mb-6 border-b border-gray-900/10 pb-4">
                             Zlaark agency
                         </h3>
@@ -67,7 +67,7 @@ export default function AgencyComparison() {
                     <div className="flex-shrink-0">
                          <Link 
                             href="/about" 
-                            className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-3.5 rounded-full transition-colors shadow-lg shadow-orange-500/20"
+                            className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-3.5 rounded-full transition-colors shadow-lg shadow-[#FEA75D]/20"
                         >
                             Read our story
                         </Link>
