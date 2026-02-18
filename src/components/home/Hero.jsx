@@ -12,10 +12,10 @@ const HeroButton = ({ children, href, variant = 'primary' }) => {
             <Link
                 href={href}
                 className={cn(
-                    'group relative flex items-center justify-center px-6 py-3 rounded-[12px] font-bold text-sm tracking-wider transition-all duration-300 overflow-hidden',
+                    'group relative flex items-center justify-center px-6 py-3 rounded-[8px] font-bold text-[15px] tracking-wider transition-all duration-300 overflow-hidden',
                     variant === 'primary'
-                        ? 'bg-[#FF6727] text-[#FEFBFA] hover:bg-gradient-to-b hover:from-[#FF6727] hover:to-[#D4420C] hover:shadow-lg transition-all duration-300'
-                        : 'bg-[#14141D] text-[#F8F8F8]'
+                        ? 'bg-[#FF6727] text-[#FEFBFA] hover:bg-gradient-to-b hover:from-[#b94a19] hover:to-[#FF6727] shadow-none transition-all duration-300'
+                        : 'bg-[#14141D] text-[#F8F8F8] hover:bg-gradient-to-b hover:from-[#2a2a35] hover:to-[#14141D] hover:shadow-[0_2px_15px_rgba(0,0,0,0.3)] transition-all duration-300'
                 )}
             >
                 <span className="relative z-10 flex items-center gap-2">

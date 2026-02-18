@@ -22,9 +22,9 @@ export default function Header() {
     return (
         <>
             <header className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
-                <div className="bg-white rounded-[10px] shadow-[0_4px_20px_rgba(0,0,0,0.08)] flex items-center border border-black/[0.03] pointer-events-auto">
+                <div className="bg-white rounded-[10px] shadow-[0_4px_20px_rgba(0,0,0,0.08)] flex items-center border border-black/[0.03] pointer-events-auto px-2">
                     {/* Logo Section */}
-                    <Link href="/" className="flex items-center gap-3 pl-2 pr-6 py-2 hover:bg-black/5 rounded-md transition-colors group">
+                    <Link href="/" className="flex items-center gap-3 pl-2 pr-6 py-2 group">
                         <div className="relative w-6 h-6">
                             <Image
                                 src='/logo.jpg'
@@ -38,28 +38,28 @@ export default function Header() {
                     </Link>
 
                     {/* Divider */}
-                    <div className="w-px h-7 bg-black/10 mx-4"></div>
+                    <div className="w-[1.5px] self-stretch bg-[#F5F4F3] mx-4"></div>
 
                     {/* Menu Section */}
                     <button
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className="px-6 py-4 hover:bg-black/[0.03] transition-colors text-black relative group"
+                        className="px-6 py-4 text-black relative group"
                         aria-label="Toggle Menu"
                     >
-                        <div className="flex flex-col gap-[3px] w-5">
-                            <div className="h-[1.5px] w-full bg-black"></div>
-                            <div className="h-[1.5px] w-full bg-black"></div>
+                        <div className="flex flex-col gap-[5px] w-6">
+                            <div className="h-px w-full bg-[#060612]"></div>
+                            <div className="h-px w-full bg-[#060612]"></div>
                         </div>
                     </button>
 
                     {/* Divider */}
-                    <div className="w-px h-7 bg-black/10 mx-4"></div>
+                    <div className="w-[1.5px] self-stretch bg-[#F5F4F3] mx-4"></div>
 
                     {/* CTA Section */}
                     <div className="pl-6 pr-2 py-1">
                         <Link
                             href="/contact"
-                            className="bg-[#23232A] text-white px-7 py-2.5 rounded-[4px] font-bold text-xs tracking-wider uppercase hover:bg-[#23232A] hover:outline hover:outline-2 hover:outline-dashed hover:outline-[#FFFFFF] hover:outline-offset-2 transition-all"
+                            className="bg-[#23232A] text-white px-4 py-2 rounded-[6px] font-bold text-[13px] tracking-wider hover:bg-gradient-to-b hover:from-[#3a3a44] hover:to-[#23232A] transition-all duration-300"
                         >
                             Get started
                         </Link>
