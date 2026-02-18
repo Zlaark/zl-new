@@ -26,18 +26,18 @@ export default function AgencyComparison() {
             <div className="container mx-auto max-w-4xl">
                 
                 {/* Comparison Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 items-stretch">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-0 mb-16 items-stretch">
                     
                     {/* Left Card - Other Agencies */}
                     {/* Kept bg-white, added shadow-sm for subtle lift against gray bg */}
-                    <div className="p-8 rounded-2xl bg-white border border-gray-100 shadow-sm">
+                    <div className="px-8 py-10 rounded-l-2xl bg-white border border-gray-200 border-r-0">
                         <h3 className="text-xl font-bold text-gray-900 mb-6 border-b border-gray-100 pb-4">
                             Other agencies
                         </h3>
-                        <ul className="space-y-4">
+                        <ul className="space-y-5">
                             {otherAgencies.map((item, index) => (
-                                <li key={index} className="flex items-start gap-3 text-gray-500 font-medium text-lg">
-                                    <div className="mt-1.5"><ChevronRight className="w-5 h-5 text-gray-300" /></div>
+                                <li key={index} className="flex items-start gap-3 text-gray-500 font-medium text-base">
+                                    <div className="mt-1.5"><ChevronRight className="w-4 h-4 text-gray-300" /></div>
                                     <span>{item}</span>
                                 </li>
                             ))}
@@ -45,14 +45,14 @@ export default function AgencyComparison() {
                     </div>
 
                     {/* Right Card - Zlaark (Orange) */}
-                    <div className="p-8 rounded-2xl bg-[#FEA75D] shadow-xl shadow-[#FEA75D]/20 transform md:scale-105 relative z-10 text-gray-900 border-2 border-[#FEA75D]">
-                        <h3 className="text-xl font-bold mb-6 border-b border-gray-900/10 pb-4">
+                    <div className="px-8 py-10 rounded-r-2xl bg-[#FEA75D] text-gray-900 -my-4 relative z-10">
+                        <h3 className="text-xl font-bold mb-6 border-b border-black/10 pb-4">
                             Zlaark agency
                         </h3>
-                        <ul className="space-y-4">
+                        <ul className="space-y-5">
                             {zlaarkBenefits.map((item, index) => (
-                                <li key={index} className="flex items-start gap-3 font-semibold text-lg">
-                                    <div className="mt-1.5"><ChevronRight className="w-5 h-5 text-gray-900/60" /></div>
+                                <li key={index} className="flex items-start gap-3 font-semibold text-base">
+                                    <div className="mt-1.5"><ChevronRight className="w-4 h-4 text-gray-900/60" /></div>
                                     <span>{item}</span>
                                 </li>
                             ))}
@@ -102,3 +102,4 @@ export default function AgencyComparison() {
         </section>
     );
 }
+
