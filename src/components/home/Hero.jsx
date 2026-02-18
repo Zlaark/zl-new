@@ -12,10 +12,10 @@ const HeroButton = ({ children, href, variant = 'primary' }) => {
             <Link
                 href={href}
                 className={cn(
-                    'group relative flex items-center justify-center px-8 py-4 rounded-[6px] font-bold text-sm tracking-wider transition-all duration-300 overflow-hidden',
+                    'group relative flex items-center justify-center px-8 py-4 rounded-[12px] font-bold text-sm tracking-wider transition-all duration-300 overflow-hidden',
                     variant === 'primary'
-                        ? 'bg-[#FF6321] text-white'
-                        : 'bg-[#060612] text-white'
+                        ? 'bg-[#EB5B1F] text-[#FEFBFA]'
+                        : 'bg-[#14141D] text-[#F8F8F8]'
                 )}
             >
                 <span className="relative z-10 flex items-center gap-2">
@@ -77,8 +77,8 @@ export default function Hero() {
                         className='flex flex-col items-center max-w-5xl mx-auto'
                     >
                         {/* Badge */}
-                        <motion.div variants={fadeInUp} className='mb-8'>
-                            <span className='inline-flex items-center gap-[6px] py-[4px] px-[16px] border border-[#EDEBEA] bg-[#F4F2F0] text-[9px] font-bold tracking-[0.25em] uppercase text-[#747379]'>
+                        <motion.div variants={fadeInUp} className='mb-[19.2px]'>
+                            <span className='inline-flex items-center gap-[6px] py-[4px] px-[16px] border border-[#EDEBEA] bg-[#F4F2F0] text-[10px] font-bold tracking-[0.25em] uppercase text-[#747379]'>
                                 <span style={{ color: "#C4C2C0" }}>❯</span>
                                 DIGITAL AGENCY
                                 <span style={{ color: "#C4C2C0" }}>❮</span>
@@ -88,7 +88,7 @@ export default function Hero() {
                         {/* Headline */}
                         <motion.h1
                             variants={fadeInUp}
-                            className='text-4xl md:text-6xl lg:text-[72px] font-medium tracking-[-0.02em] text-[#060612] mb-10 leading-[1.1] flex flex-col items-center'
+                            className='text-[34px] md:text-[58px] lg:text-[70px] font-medium tracking-[-0.02em] text-[#060612] mb-4 leading-[1.1] flex flex-col items-center'
                         >
                             <span className="block">We design brands</span>
                             <span className="flex items-center justify-center gap-x-4">
@@ -100,9 +100,9 @@ export default function Hero() {
                         {/* Description */}
                         <motion.p
                             variants={fadeInUp}
-                            className='text-base md:text-lg text-slate-600 max-w-2xl mb-10 leading-relaxed font-medium'
+                            className='text-[15px] md:text-[17px] text-slate-600 max-w-2xl mb-4 leading-[1.1] font-medium'
                         >
-                            We combine strategy, design, and technology to help ambitious brands <br className="hidden md:block" /> stand out & create meaningful digital experiences.
+                            We combine strategy, design, and technology to help ambitious <br className="hidden md:block" /> brands stand out & create meaningful digital experiences.
                         </motion.p>
 
                         {/* CTA Buttons */}
