@@ -21,8 +21,8 @@ export default function Header() {
 
     return (
         <>
-            <header className="fixed top-8 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
-                <div className="bg-white rounded-md shadow-sm px-4 py-3 flex items-center border border-black/5 pointer-events-auto">
+            <header className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
+                <div className="bg-white rounded-[10px] shadow-[0_4px_20px_rgba(0,0,0,0.08)] flex items-center border border-black/[0.03] pointer-events-auto">
                     {/* Logo Section */}
                     <Link href="/" className="flex items-center gap-3 pl-2 pr-6 py-2 hover:bg-black/5 rounded-md transition-colors group">
                         <div className="relative w-6 h-6">
@@ -43,22 +43,27 @@ export default function Header() {
                     {/* Menu Section */}
                     <button
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className="px-4 py-3 hover:bg-black/5 rounded-md transition-colors text-black relative group"
+                        className="px-6 py-4 hover:bg-black/[0.03] transition-colors text-black relative group"
                         aria-label="Toggle Menu"
                     >
-                        <Menu className="w-5 h-5" />
+                        <div className="flex flex-col gap-[3px] w-5">
+                            <div className="h-[1.5px] w-full bg-black"></div>
+                            <div className="h-[1.5px] w-full bg-black"></div>
+                        </div>
                     </button>
 
                     {/* Divider */}
                     <div className="w-px h-7 bg-black/10 mx-4"></div>
 
                     {/* CTA Section */}
-                    <Link
-                        href="/contact"
-                        className="bg-black text-white px-8 py-3 rounded-md font-medium text-sm hover:bg-black/80 transition-colors"
-                    >
-                        Get started
-                    </Link>
+                    <div className="pl-6 pr-2 py-1">
+                        <Link
+                            href="/contact"
+                            className="bg-[#060612] text-white px-7 py-2.5 rounded-[4px] font-bold text-xs tracking-wider uppercase hover:bg-black transition-colors"
+                        >
+                            Get started
+                        </Link>
+                    </div>
                 </div>
             </header>
 

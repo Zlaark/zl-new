@@ -12,10 +12,10 @@ const HeroButton = ({ children, href, variant = 'primary' }) => {
             <Link
                 href={href}
                 className={cn(
-                    'group relative flex items-center justify-center px-6 py-3 rounded-md font-bold text-sm tracking-widest uppercase transition-all duration-300 overflow-hidden',
+                    'group relative flex items-center justify-center px-8 py-4 rounded-[6px] font-bold text-sm tracking-wider transition-all duration-300 overflow-hidden',
                     variant === 'primary'
-                        ? 'bg-orange-500 text-white shadow-lg shadow-orange-500/30'
-                        : 'bg-[#1a1c2e] text-white shadow-lg shadow-blue-900/20'
+                        ? 'bg-[#FF6321] text-white'
+                        : 'bg-[#060612] text-white'
                 )}
             >
                 <span className="relative z-10 flex items-center gap-2">
@@ -69,44 +69,44 @@ export default function Hero() {
             <motion.div
                 className='container relative z-10 px-6 mx-auto'
             >
-                <div className='flex flex-col items-center text-center'>
+                <div className='flex flex-col items-start text-left'>
                     <motion.div
                         initial='hidden'
                         animate='visible'
                         variants={staggerContainer}
-                        className='flex flex-col items-center max-w-5xl mx-auto'
+                        className='flex flex-col items-start max-w-5xl'
                     >
                         {/* Badge */}
                         <motion.div variants={fadeInUp} className='mb-8'>
-                            <span className='inline-flex items-center gap-4 py-2 px-5 rounded-md border border-[#e5e5e5] bg-[#f4f4f4]/80 text-[11px] font-bold tracking-[0.25em] uppercase text-slate-600 shadow-sm backdrop-blur-sm'>
-                                <PixelArrow direction="right" />
+                            <span className='inline-flex items-center gap-2 py-1.5 px-3 border border-[#e5e5e5] bg-[#f4f4f4]/80 text-[10px] font-bold tracking-[0.2em] uppercase text-slate-500'>
+                                <span className="opacity-30">❯</span>
                                 DIGITAL AGENCY
-                                <PixelArrow direction="left" />
+                                <span className="opacity-30">❮</span>
                             </span>
                         </motion.div>
 
                         {/* Headline */}
                         <motion.h1
                             variants={fadeInUp}
-                            className='text-3xl md:text-5xl lg:text-7xl font-bold tracking-tight  mb-6 leading-[0.9] flex flex-col items-center'
+                            className='text-5xl md:text-7xl lg:text-[85px] font-bold tracking-[-0.02em] text-[#060612] mb-8 leading-[1.05] flex flex-col items-start w-full'
                         >
-                            <span className="block text-[#060612]">We Craft</span>
-                            <div className="flex items-center justify-center gap-x-4">
-                                <span className="text-[#060612]">Digital</span>
-                                <span className="text-[#FF6321] font-medium">Legacies</span>
-                            </div>
+                            <span className="block">We design brands</span>
+                            <span className="flex items-center justify-start gap-x-4">
+                                <span>that move</span>
+                                <span className='text-[#FF6321]'>people</span>
+                            </span>
                         </motion.h1>
 
                         {/* Description */}
                         <motion.p
                             variants={fadeInUp}
-                            className='text-base md:text-lg text-slate-600 max-w-2xl mb-12 leading-relaxed font-medium'
+                            className='text-base md:text-lg text-slate-600 max-w-2xl mb-10 leading-relaxed font-medium'
                         >
                             We combine strategy, design, and technology to help ambitious brands <br className="hidden md:block" /> stand out & create meaningful digital experiences.
                         </motion.p>
 
                         {/* CTA Buttons */}
-                        <motion.div variants={fadeInUp} className='flex flex-col sm:flex-row gap-6 mt-4 relative'>
+                        <motion.div variants={fadeInUp} className='flex flex-col sm:flex-row gap-6 mt-6 relative'>
                             {/* Callout Arrow & Text */}
                             <div className="hidden md:block absolute -left-[220px] top-[60%] -translate-y-1/2 w-[220px] pointer-events-none">
                                 <div className="relative h-24 w-full">
