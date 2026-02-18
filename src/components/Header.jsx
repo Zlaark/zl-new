@@ -59,7 +59,7 @@ export default function Header() {
                     <div className="pl-6 pr-2 py-1">
                         <Link
                             href="/contact"
-                            className="bg-[#060612] text-white px-7 py-2.5 rounded-[4px] font-bold text-xs tracking-wider uppercase hover:bg-black transition-colors"
+                            className="bg-[#23232A] text-white px-7 py-2.5 rounded-[4px] font-bold text-xs tracking-wider uppercase hover:bg-[#23232A] hover:outline hover:outline-2 hover:outline-dashed hover:outline-[#FFFFFF] hover:outline-offset-2 transition-all"
                         >
                             Get started
                         </Link>
