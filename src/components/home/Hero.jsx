@@ -90,10 +90,11 @@ export default function Hero() {
                             variants={fadeInUp}
                             className='text-3xl md:text-5xl lg:text-7xl font-bold tracking-tight  mb-6 leading-[0.9] flex flex-col items-center'
                         >
-                            <span className="block text-[#060612]">We Craft Digital</span>
-                            <span className='text-[#FF6321] font-medium'>
-                                Legacies
-                            </span>
+                            <span className="block text-[#060612]">We Craft</span>
+                            <div className="flex items-center justify-center gap-x-4">
+                                <span className="text-[#060612]">Digital</span>
+                                <span className="text-[#FF6321] font-medium">Legacies</span>
+                            </div>
                         </motion.h1>
 
                         {/* Description */}
