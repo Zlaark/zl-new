@@ -78,10 +78,10 @@ export default function Hero() {
                     >
                         {/* Badge */}
                         <motion.div variants={fadeInUp} className='mb-8'>
-                            <span className='inline-flex items-center gap-2 py-1.5 px-3 border border-[#e5e5e5] bg-[#f4f4f4]/80 text-[10px] font-bold tracking-[0.2em] uppercase text-slate-500'>
-                                <span className="opacity-30">❯</span>
+                            <span className='inline-flex items-center gap-[6px] py-[4px] px-[16px] border border-[#EDEBEA] bg-[#F4F2F0] text-[9px] font-bold tracking-[0.25em] uppercase text-[#747379]'>
+                                <span style={{ color: "#C4C2C0" }}>❯</span>
                                 DIGITAL AGENCY
-                                <span className="opacity-30">❮</span>
+                                <span style={{ color: "#C4C2C0" }}>❮</span>
                             </span>
                         </motion.div>
 
